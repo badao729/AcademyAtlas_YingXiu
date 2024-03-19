@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Titillium";
+  font-weight: 400;
+  src: url("../../assets/font/TitilliumWeb-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Titillium";
+  font-weight: 600;
+  src: url("../../assets/font/TitilliumWeb-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Titillium";
+  font-weight: 700;
+  src: url("../../assets/font/TitilliumWeb-Bold.ttf") format("truetype");
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Titillium", Arial, Helvetica, sans-serif;
+}
