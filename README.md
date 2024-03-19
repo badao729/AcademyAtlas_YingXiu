@@ -2,8 +2,10 @@
 MyTeachMate
 
 EduManage Pro
-PlanMyClass
-AcademyAtlas
+
+PlanMyClass -
+
+AcademyAtlas -
 
 
 
@@ -30,11 +32,9 @@ Teachers
 - track course progress and provide feedback
 - maintain a notes section for important reminders.
 
-Students
-- only access own schedules
+Students (nice to have)
+- only access own schedules （JWT）
 - book lessons during available times
-
-(nice to have)
 - receive lesson feedback
 - be reminded of low balance for tuition fees
 - review their course history including dates, teacher comments, and payment information.
@@ -207,3 +207,9 @@ Designed with a focus on streamlining administrative tasks and fostering better 
 With a robust tech stack including JavaScript, React, MySQL, and NodeJS/Express, the application promises a seamless user experience for all educational administration needs. 
 
 MyTeachMate aims to be an indispensable tool in the educational sector, making teaching and learning processes more efficient and interconnected.
+
+
+
+
+- in the future
+mutiply varification 
