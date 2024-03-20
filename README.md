@@ -122,10 +122,10 @@ see asset folder
 
 
 ### Data
-Two tables:
-- Students information
-- Students' class information
-- Students' payment information (nice to have)
+three SQL tables (knex):
+- user info
+- timetable 
+- payment 
 
 
 
@@ -133,12 +133,17 @@ Two tables:
 
 ### Endpoints
 
-Login page:
+Login and registar page:
 - http://localhost:3000/
 
 Canlender page:
-- http://localhost:3000/booking
+- http://localhost:3000/canlendar
 
+students page:
+- http://localhost:3000/students
+
+each student page:
+- http://localhost:3000/students/:id
 
 
 
