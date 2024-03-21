@@ -1,11 +1,21 @@
-import React from 'react';
+import Header from './components/header/Header'
+import Nav from './components/nav/Nav'
 
-const Layout = ({ children }) => (
-  <div>
-    <header>Header</header>
-    <main>{children}</main>
-    <footer>Footer</footer>
-  </div>
+export const metadata ={
+    title: 'Academy Atlas',
+    description:  "Plan your courses anytime.",
+  }
+  
+
+const Rootlayout = ({ children }) => (
+    <html lang="en">
+        <body>
+            <Header />
+            <Nav />
+            <main>{children}</main>
+            <footer>Footer</footer>
+        </body>
+    </html>
 );
 
-export default Layout;
+export default Rootlayout;

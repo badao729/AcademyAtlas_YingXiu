@@ -1,5 +1,23 @@
-export default function Calendar() {
+import NavButton from "@/app/components/navigation/navButton"
+import './calendar.scss'
+import Calendar from './Calendar'
+
+
+
+
+export default function CalendarPage() {
+
+
+
+
+
+
     return (
-        <div className="calendar">Calendar</div>
+        <article className="calendar">
+            <NavButton />
+            <div >Calendar</div>
+            <Calendar />
+
+        </article>
     )
 }
