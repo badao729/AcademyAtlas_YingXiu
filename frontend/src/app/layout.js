@@ -1,5 +1,5 @@
-import Header from './components/header/Header'
-import Nav from './components/nav/Nav'
+import Header from './components/header/Header';
+import Nav from './components/nav/Nav';
 
 export const metadata ={
     title: 'Academy Atlas',
