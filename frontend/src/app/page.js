@@ -2,7 +2,6 @@
 
 import "./Home.scss"
 import Link from "next/link";
-import Logout from "../app/components/logout/logout"
 
 
 
@@ -30,7 +29,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <Link href="/login">
+        <Link href="/register">
           <button className="anima-scaleUp registar"><h2>Get started</h2></button>
         </Link>
       </section>

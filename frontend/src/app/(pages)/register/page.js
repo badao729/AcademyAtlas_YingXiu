@@ -1,8 +1,7 @@
 'use client';
 
-import "./login.scss"
+import "./register.scss"
 import NavButton from "../../components/navigation/navButton";
-
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
@@ -13,6 +12,10 @@ import { useEffect, useState } from "react";
 export default function LoginPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const [position, setPosition] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
 
     const router = useRouter()
     const [user, setUser] = useState(null);
@@ -30,6 +33,21 @@ export default function LoginPage() {
 
         getUser();
     }, [])
+
+
+    const handleSignUp = async () => {
+        const res = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                emailRedirectTo: `${location.origin}/auth/callback`
+            }
+        })
+        setUser(res.data.user)
+        router.refresh();
+        setEmail('')
+        setPassword('')
+    }
 
     const handleSignIn = async () => {
         const res = await supabase.auth.signInWithPassword({
@@ -49,7 +67,7 @@ export default function LoginPage() {
     }
 
 
-
+    
     console.log({ loading, user })
 
     if (loading) {
@@ -74,10 +92,47 @@ export default function LoginPage() {
     return (
         <main>
             <NavButton />
+            <div>
+                <h2>Sign Up</h2>
 
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email" />
+
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password" />
+
+                <select value={position} onChange={(e) => setPosition(e.target.value)}>
+                    <option value="">Select Position</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Student">Student</option>
+                </select>
+
+                <input
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="First Name" />
+
+                <input
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="Last Name" />
+
+                <button onClick={handleSignUp}>Sign Up</button>
+            </div>
+
+
+{/* 
             <div>
                 <h2>Sign In</h2>
-            
+
                 <input
                     type="email"
                     value={email}
@@ -91,7 +146,7 @@ export default function LoginPage() {
                     placeholder="Password" />
 
                 <button onClick={handleSignIn}>Sign In</button>
-            </div>
+            </div> */}
         </main>
     )
 
