@@ -1,6 +1,10 @@
 
+//有问题 不能使用
+
+
+
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 
 
@@ -11,7 +15,7 @@ export default function Logout () {
     const handleLogout = async () => {
         await supabase.auth.signOut();
         router.refresh();
-        router.push('/');
+        // router.push('/');
         setUser(null)
     }
 
