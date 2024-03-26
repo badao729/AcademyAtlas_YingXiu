@@ -1,15 +1,27 @@
+'use client'
+
 import "./Home.scss"
 import Link from "next/link";
+import Logout from "../app/components/logout/logout"
+
 
 
 
 export default function Home() {
+
+ 
   return (
     <main className="home">
       <section className="nav">
-        <h2 className="nav-login">Log in</h2>
+        <Link href="/login">
+          <h2 className="nav-login">Log in</h2>
+        </Link>
+
 
         <div className="nav-group">
+          <Link href="/calendar">
+            <h2 className="nav-calendar">CALENDAR</h2>
+          </Link>
           <Link href="/about">
             <h2 className="nav-about">ABOUT</h2>
           </Link>
@@ -18,7 +30,9 @@ export default function Home() {
           </Link>
         </div>
 
-        <button className="anima-scaleUp"><h2>Get started</h2></button>
+        <Link href="/login">
+          <button className="anima-scaleUp registar"><h2>Get started</h2></button>
+        </Link>
       </section>
 
       <section className="hero">

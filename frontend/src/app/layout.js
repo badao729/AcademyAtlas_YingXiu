@@ -1,5 +1,3 @@
-// import Header from './components/header/Header';
-// import Nav from './components/nav/Nav';
 
 export const metadata ={
     title: 'Academy Atlas',
@@ -10,10 +8,8 @@ export const metadata ={
 const Rootlayout = ({ children }) => (
     <html lang="en">
         <body>
-            {/* <Header /> */}
-            {/* <Nav /> */}
             <main>{children}</main>
-            {/* <footer>Footer</footer> */}
+
         </body>
     </html>
 );

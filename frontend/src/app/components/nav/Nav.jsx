@@ -2,7 +2,10 @@ import Link from "next/link";
 import './nav.scss'
 
 
+
 export default function Nav() {
+
+    
     return (
         <section className="nav">
             <div>
@@ -23,6 +26,7 @@ export default function Nav() {
             <div>
                 <Link href="/contact">CONTACT</Link>
             </div>
+
         </section>
     )
 }

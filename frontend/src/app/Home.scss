@@ -2,7 +2,9 @@
 @use "../styles/partials/variables" as *;
 @use"../styles/partials/animation" as *;
 
-
+a {
+    text-decoration: none;
+}
 
 .home {
     display: flex;
@@ -22,11 +24,11 @@
         flex-direction: column;
         display: flex;
         align-content: space-between;
-        gap: 35.5%;
+        gap: 32%;
         z-index: 3;
         position: relative;
 
-        button {
+        .registar {
             background-image: url("../assets/icons/greenArrow.png");
             height: 5rem;
             width: 20rem;
@@ -45,7 +47,7 @@
         a {
             color: $Green;
         }
-
+      
         &-login {
             margin-left: 3rem;
             width: 6rem;
@@ -59,6 +61,17 @@
 
         &-group {
             margin-left: 3rem;
+        }
+
+        &-calendar {
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            width: 9rem;
+
+            &:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            }
         }
 
         &-about {
@@ -91,7 +104,7 @@
 
         img {
             height: 100%;
-            margin-left: -20rem; 
+            margin-left: -20rem;
         }
 
     }
@@ -105,35 +118,37 @@
         background-color: transparent;
         z-index: 1;
         display: flex;
-        flex-direction: column; 
-        justify-content: center; 
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        
-        
-        h1{
+
+
+        h1 {
             font-size: 3.5rem;
-            font-family:'Times New Roman', Times, serif;
+            font-family: 'Times New Roman', Times, serif;
         }
 
-        &-text1, &-text2{
+        &-text1,
+        &-text2 {
             padding-left: 3rem;
             padding-bottom: 0.5rem;
         }
 
-        &-text3{
+        &-text3 {
             padding-left: 6rem;
             padding-top: 1rem;
             padding-bottom: 1.2rem;
         }
-        .front-quote{
-          padding-left: 1rem;
+
+        .front-quote {
+            padding-left: 1rem;
         }
 
 
-        .back-quote{
+        .back-quote {
             padding-left: 13.5rem;
         }
 
-        
+
     }
 }
