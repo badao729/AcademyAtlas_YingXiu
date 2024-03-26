@@ -1,6 +1,5 @@
 'use client'
 
-
 import React from "react";
 import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";

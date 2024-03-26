@@ -1,30 +1,28 @@
 import Link from "next/link";
-
+import './nav.scss'
 
 
 export default function Nav() {
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link href="/">HOME</Link>
-                </li>
-                <li>
-                    <Link href="/calendar">CALENDAR</Link>
-                </li>
-                <li>
-                    <Link href="/students">STUDENTS</Link>
-                </li>
-                <li>
-                    <Link href="/tuition">TUITION</Link>
-                </li>
-                <li>
-                    <Link href="/about">ABOUT</Link>
-                </li>
-                <li>
-                    <Link href="/contact">CONTACT</Link>
-                </li>
-            </ul>
-        </nav>
+        <section className="nav">
+            <div>
+                <Link href="/">HOME</Link>
+            </div>
+            <div>
+                <Link href="/calendar">CALENDAR</Link>
+            </div>
+            <div>
+                <Link href="/students">STUDENTS</Link>
+            </div>
+            <div>
+                <Link href="/tuition">TUITION</Link>
+            </div>
+            <div>
+                <Link href="/about">ABOUT</Link>
+            </div>
+            <div>
+                <Link href="/contact">CONTACT</Link>
+            </div>
+        </section>
     )
 }

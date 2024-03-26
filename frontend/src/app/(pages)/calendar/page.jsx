@@ -1,4 +1,4 @@
-import NavButton from "@/app/components/navigation/navButton"
+import NavButton from "../../components/navigation/navButton"
 import './calendar.scss'
 import Calendar from './Calendar'
 

@@ -1,10 +1,11 @@
-import NavButton from "@/app/components/navigation/navButton"
+import NavButton from "../../components/navigation/navButton"
+
 
 const About = () => {
-    return(
+    return (
         <>
-        <NavButton />
-        <div>about</div>
+            <NavButton />
+            <div>about</div>
         </>
     )
 }
