@@ -27,7 +27,7 @@ model User {
   password            String
   position            Position
   createdAt           DateTime    @default(now())
-  updatedAt           DateTime    @updatedAt
+  // updatedAt           DateTime    @updatedAt
   timetablesAsStudent Timetable[] @relation("Student")
   timetablesAsTeacher Timetable[] @relation("Teacher")
   Payment             Payment[]
@@ -43,7 +43,7 @@ model Timetable {
 
   student User      @relation("Student", fields: [studentId], references: [id])
   teacher User      @relation("Teacher", fields: [teacherId], references: [id])
-  payment Payment[]
+  // payment Payment[]
 }
 
 model Payment {
@@ -53,8 +53,8 @@ model Payment {
   payment     Float
   balance     Float
   unitPrice   Float
-  courseId    Int
+  // courseId    Int
 
   student User      @relation(fields: [studentId], references: [id])
-  course  Timetable @relation(fields: [courseId], references: [courseId])
+  // course  Timetable @relation(fields: [courseId], references: [courseId])
 }
