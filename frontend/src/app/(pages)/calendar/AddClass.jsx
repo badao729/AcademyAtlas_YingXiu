@@ -2,6 +2,10 @@ import React, { useState, useRef } from "react";
 import Modal from "react-modal"
 import Datetime from 'react-datetime'
 
+import './AddClass.scss'
+
+
+
 export default function ({ isOpen, onClose, onEventAdded }) {
     const [title, setTitle] = useState("");
     const [start, setStart] = useState(new Date());
