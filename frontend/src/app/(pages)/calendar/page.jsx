@@ -1,18 +1,18 @@
 'use client'
 
-import NavButton from "../../components/navigation/navButton"
+
+import loadingAnima from "../../../assets/animation/loading-animation.json"
 import './calendar.scss'
-// import Calendar from './Calendar'
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react";
 import axios from "axios"
 import AddClass from "./AddClass"
 import moment from "moment"
+import Lottie from "lottie-react"
 
 import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-
 
 
 
@@ -23,55 +23,119 @@ export default function CalendarPage() {
     const [event, setEvent] = useState([])
     const calendarRef = useRef(null);
 
+    const [loading, setLoading] = useState(true);
+
+
+
+    useEffect(() => {
+        handleDatesSet({
+            start: moment().startOf('month'),
+            end: moment().endOf('month')
+        });
+    }, []);
+
+
     const onEventAdded = event => {
         let calendarApi = calendarRef.current.getApi();
-        calendarApi.addEvent({
-            start:moment(event.start).toDate(),
-            end: moment(event.end).toDate(),
-            title:event.title
-        });
 
+        calendarApi.addEvent({
+            start: moment(event.start).toDate(),
+            end: moment(event.end).toDate(),
+            title: event.title
+        });
     };
 
-    async function handleEventAdd(data) {
-        await axios.post("/api/calendar/create-event", data.event)
-    }
+
+    // async function handleEventAdd(data) {
+    //     await axios.post("/api/calendar/create-event", data.event)
+    // }
 
     async function handleDatesSet(data) {
-        const response = await axios.get(
-            "/api/calendar/get-events?start=" 
-            + moment(data.start).toISOString() 
-            + "&end=" + moment(data.end).toISOString
-            )
-        setEvent(response.data)
+        try {
+            const response = await axios.get(
+                "/api/calendar/get-events?start=" +
+                moment(data.start).toISOString() +
+                "&end=" + moment(data.end).toISOString()
+            );
+            setEvent(response.data);
+            setLoading(false);
+        } catch (error) {
+            console.error("Failed to fetch events", error);
+            setLoading(false);
+        }
     }
+
+    if (loading) {
+        return (
+            <>
+                <Lottie className="anima-loading" animationData={loadingAnima} />
+            </>
+        )
+    }
+
+
+
+
+    //原始数据
+    // const onEventAdded = event => {
+    //     let calendarApi = calendarRef.current.getApi();
+    //     calendarApi.addEvent({
+    //         start:moment(event.start).toDate(),
+    //         end: moment(event.end).toDate(),
+    //         title:event.title
+    //     });
+
+    // };
+
+    // async function handleEventAdd(data) {
+    //     await axios.post("/api/calendar/create-event", data.event)
+    // }
+
+    // async function handleDatesSet(data) {
+    //     const response = await axios.get(
+    //         "/api/calendar/get-events?start=" 
+    //         + moment(data.start).toISOString() 
+    //         + "&end=" + moment(data.end).toISOString
+    //         )
+    //     setEvent(response.data)
+    // }
+
+
+    // if (loading) {
+    //     return (
+    //         <>
+    //             <Lottie className="anima-loading" animationData={loadingAnima} />
+    //         </>
+    //     )
+    // }
+    //原始数据
+
 
 
     return (
         <article className="calendar">
-            <NavButton />
+            <div className="calendar-container">
+                <button className="addClass" onClick={() => setModalOpen(true)}>Add Class</button>
 
-            <button onClick={() => setModalOpen(true)}>Add Class</button>
-
-            <div style={{ position: "relative", zIndex: 0 }}>
-                <Fullcalendar
-                    ref={calendarRef}
-                    events={event}
-                    plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                    initialView={"dayGridWeek"}
-                    headerToolbar={{
-                        start: "today prev,next",
-                        center: "title",
-                        end: "dayGridMonth,timeGridWeek,timeGridDay",
-                    }}
-                    height={"90vh"}
-                    eventAdd={event => handleEventAdd(event)}
-                    datesSet={(date) => handleDatesSet(date)}
-                />
+                <div className='fullCalender' style={{ position: "relative", zIndex: 0 }}>
+                    <Fullcalendar
+                        ref={calendarRef}
+                        events={event}
+                        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                        initialView={"dayGridWeek"}
+                        headerToolbar={{
+                            start: "today prev,next",
+                            center: "title",
+                            end: "dayGridMonth,timeGridWeek,timeGridDay",
+                        }}
+                        height={"80vh"}
+                        eventAdd={event => handleEventAdd(event)}
+                        datesSet={(date) => handleDatesSet(date)}
+                    />
+                </div>
             </div>
 
             <AddClass
-
                 isOpen={modalOpen}
                 onClose={() => setModalOpen(false)}
                 onEventAdded={event => onEventAdded(event)} />
