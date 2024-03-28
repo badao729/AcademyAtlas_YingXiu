@@ -3,7 +3,7 @@
 import "./login.scss"
 import NavButton from "../../components/navigation/navButton";
 import loadingAnima from "../../../assets/animation/loading-animation.json"
-
+import success from "../../../assets/animation/success-animation.json"
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
@@ -69,17 +69,27 @@ export default function LoginPage() {
     if (user) {
         return (
             <div>
-                <div>
-                    <h1>
-                        You're already logged in
-                    </h1>
-                    <button onClick={handleLogout}>Logout</button>
-                    <NavButton />
+                <div className="nav">
+                    <img className="nav-logo"
+                        src="/icons/greenAll.png"
+                        alt="logo" />
 
+                    <div className="nav-buttons">
+                        <NavButton />
+
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>
+                </div>
+
+                <div className="logged-in">
+                    <Lottie className="anima-success" animationData={success} />
+                    <h1>You're already logged in</h1>
                 </div>
             </div>
         )
     }
+
+
 
     return (
         <main className="login">

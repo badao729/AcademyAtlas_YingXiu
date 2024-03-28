@@ -3,11 +3,13 @@
 import "./register.scss"
 import NavButton from "../../components/navigation/navButton";
 import loadingAnima from "../../../assets/animation/loading-animation.json"
+import success from "../../../assets/animation/success-animation.json"
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Lottie from "lottie-react"
+import Link from "next/link";
 
 
 
@@ -59,27 +61,35 @@ export default function LoginPage() {
     }
 
 
-    
+
     console.log({ loading, user })
 
     if (loading) {
-        return( 
+        return (
             <>
-           <Lottie className="anima-loading" animationData={loadingAnima} />
+                <Lottie className="anima-loading" animationData={loadingAnima} />
             </>
-            )
+        )
     }
 
     if (user) {
         return (
             <div>
-                <div>
-                    <h1>
-                        You're already logged in
-                    </h1>
-                    <button onClick={handleLogout}>Logout</button>
-                    <NavButton/>
+                <div className="nav">
+                    <img className="nav-logo"
+                        src="/icons/greenAll.png"
+                        alt="logo" />
 
+                    <div className="nav-buttons">
+                        <NavButton />
+
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>
+                </div>
+
+                <div className="logged-in">
+                    <Lottie className="anima-success" animationData={success} />
+                    <h1>You're already logged in</h1>
                 </div>
             </div>
         )
@@ -87,10 +97,21 @@ export default function LoginPage() {
 
     return (
         <main>
-            <NavButton />
-            <div>
-                <h2>Sign Up</h2>
+            <div className="nav">
+                <img className="nav-logo"
+                    src="/icons/greenAll.png"
+                    alt="logo" />
 
+                <div className="nav-buttons">
+                    <NavButton />
+                    <Link href="/login">
+                        <button>Sign In</button>
+                    </Link>
+                </div>
+            </div>
+
+            <div className="form-container">
+                <h2 className="form-title">Sign Up to AcademyAtlas</h2>
                 <input
                     type="email"
                     value={email}
@@ -102,12 +123,6 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password" />
-
-                <select value={position} onChange={(e) => setPosition(e.target.value)}>
-                    <option value="">Select Position</option>
-                    <option value="Teacher">Teacher</option>
-                    <option value="Student">Student</option>
-                </select>
 
                 <input
                     type="text"
@@ -121,11 +136,17 @@ export default function LoginPage() {
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Last Name" />
 
+                <select value={position} onChange={(e) => setPosition(e.target.value)}>
+                    <option value="">Select Position</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Student">Student</option>
+                </select>
+
                 <button onClick={handleSignUp}>Sign Up</button>
             </div>
 
 
-{/* 
+            {/* 
             <div>
                 <h2>Sign In</h2>
 
