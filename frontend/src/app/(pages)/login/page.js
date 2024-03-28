@@ -2,11 +2,14 @@
 
 import "./login.scss"
 import NavButton from "../../components/navigation/navButton";
+import loadingAnima from "../../../assets/animation/loading-animation.json"
 
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Lottie from "lottie-react"
+import Link from "next/link";
 
 
 
@@ -52,8 +55,15 @@ export default function LoginPage() {
 
     console.log({ loading, user })
 
+
+
+
     if (loading) {
-        return <h1>loading..</h1>
+        return (
+            <>
+                <Lottie className="anima-loading" animationData={loadingAnima} />
+            </>
+        )
     }
 
     if (user) {
@@ -64,7 +74,7 @@ export default function LoginPage() {
                         You're already logged in
                     </h1>
                     <button onClick={handleLogout}>Logout</button>
-                    <NavButton/>
+                    <NavButton />
 
                 </div>
             </div>
@@ -72,12 +82,24 @@ export default function LoginPage() {
     }
 
     return (
-        <main>
-            <NavButton />
+        <main className="login">
+            <div className="nav">
+                <img className="nav-logo"
+                    src="/icons/greenAll.png"
+                    alt="logo" />
 
-            <div>
-                <h2>Sign In</h2>
-            
+                <div className="nav-buttons">
+                    <NavButton />
+                    <Link href="/register">
+                        <button>Sign Up</button>
+                    </Link>
+
+                </div>
+            </div>
+
+            <div className="form-container">
+                <h2 className="form-title">Log in to AcademyAtlas</h2>
+
                 <input
                     type="email"
                     value={email}
@@ -91,6 +113,9 @@ export default function LoginPage() {
                     placeholder="Password" />
 
                 <button onClick={handleSignIn}>Sign In</button>
+
+                <h3 className="forgetPW">Forget Password?</h3>
+                <h3 className="forgetPW-continue">Try remember by yourself, function's under construction</h3>
             </div>
         </main>
     )

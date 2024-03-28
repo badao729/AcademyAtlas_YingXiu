@@ -2,10 +2,12 @@
 
 import "./register.scss"
 import NavButton from "../../components/navigation/navButton";
+import loadingAnima from "../../../assets/animation/loading-animation.json"
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Lottie from "lottie-react"
 
 
 
@@ -61,7 +63,11 @@ export default function LoginPage() {
     console.log({ loading, user })
 
     if (loading) {
-        return <h1>loading..</h1>
+        return( 
+            <>
+           <Lottie className="anima-loading" animationData={loadingAnima} />
+            </>
+            )
     }
 
     if (user) {
