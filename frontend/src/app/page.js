@@ -46,7 +46,7 @@ export default function Home() {
           </Link> */}
 
         <Link href="/register">
-          <Lottie animationData={start} />
+          <Lottie className="start-anima" animationData={start} />
         </Link>
       </section>
 
