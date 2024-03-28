@@ -4,9 +4,18 @@
 
 
 
-th,
-td {
-    cursor: pointer;
+// th,
+// td {
+//     cursor: pointer;
+// }
+
+button{
+  margin-top: 1rem;
+}
+
+.ReactModal__Content.ReactModal__Content--after-open{
+  width: 18.5rem;
+  height: 35rem;
 }
 
 .rdtDays{

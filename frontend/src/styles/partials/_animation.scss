@@ -11,23 +11,26 @@
 
 @media (prefers-reduced-motion: no-preference) {
     .anima-spin {
-        animation: anima-spin infinite 20s linear;
+        animation: anima-spin infinite 3s linear;
     }
 }
 
 
 @keyframes anima-scaleUp {
     from {
-      transform: scale(1);
+        transform: scale(1);
     }
-  
-    to {
-      transform: scale(1.2);
-    }
-  }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .anima-scaleUp:hover, .anima-scaleUp:active {
+    to {
+        transform: scale(1.4);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+    .anima-scaleUp:hover,
+    .anima-scaleUp:active {
         animation: anima-scaleUp 1.5s forwards;
     }
 }
+

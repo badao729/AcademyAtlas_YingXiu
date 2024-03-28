@@ -2,19 +2,35 @@
 
 import "./Home.scss"
 import Link from "next/link";
+import Lottie from "lottie-react"
+import arrow from "../assets/animation/arrow-animation.json"
+import start from "../assets/animation/start-animation.json"
 
+// import { useRouter } from 'next/router';
 
 
 
 export default function Home() {
 
- 
+
   return (
     <main className="home">
+
       <section className="nav">
-        <Link href="/login">
-          <h2 className="nav-login">Log in</h2>
-        </Link>
+
+        <div>
+          <img className="nav-logo"
+            src="/icons/greenAll.png"
+            alt="logo" />
+
+          <Link href="/login">
+            <h2 className="nav-login">Log in</h2>
+          </Link>
+
+           <Link href="/register"> 
+           <h2 className="nav-register">Register</h2>
+          </Link>
+        </div>
 
 
         <div className="nav-group">
@@ -29,9 +45,13 @@ export default function Home() {
           </Link>
         </div>
 
-        <Link href="/register">
-          <button className="anima-scaleUp registar"><h2>Get started</h2></button>
-        </Link>
+        {/* <Link href="/register"> 
+          <button className="anima-scaleUp registar">
+          <h2>Get started</h2>
+          </button> 
+          </Link> */}
+
+          <Lottie animationData={start} />
       </section>
 
       <section className="hero">
@@ -39,6 +59,7 @@ export default function Home() {
       </section>
 
       <section className="slogan">
+        {/* <Lottie className="anima-arrow" animationData={arrow} /> */}
         <div>
           <h1 className="front-quote">“</h1>
           <h3 className="slogan-text1">Beyond Limits</h3>

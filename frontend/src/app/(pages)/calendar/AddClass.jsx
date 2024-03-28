@@ -3,6 +3,7 @@ import Modal from "react-modal"
 import Datetime from 'react-datetime'
 
 import './AddClass.scss'
+import NavButton from "../../components/navigation/navButton";
 
 
 
@@ -46,7 +47,7 @@ export default function ({ isOpen, onClose, onEventAdded }) {
                 </div>
 
                 <button>Add Class</button>
-
+                <NavButton/>
             </form>
         </Modal>
     )
