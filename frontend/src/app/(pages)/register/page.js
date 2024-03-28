@@ -74,7 +74,7 @@ export default function LoginPage() {
 
     if (user) {
         return (
-            <div>
+            <div className="loading-container">
                 <div className="nav">
                     <img className="nav-logo"
                         src="/icons/greenAll.png"
