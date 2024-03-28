@@ -14,28 +14,28 @@ export default function Home() {
   return (
     <main className="home">
 
-      <section className="nav">
+      <section className="home-nav">
 
         <div>
-          <img className="nav-logo"
+          <img className="home-nav-logo"
             src="/icons/greenAll.png"
             alt="logo" />
 
           <Link href="/login">
-            <h2 className="nav-login">Log in</h2>
+            <h2 className="home-nav-login">Log in</h2>
           </Link>
         </div>
 
 
-        <div className="nav-group">
+        <div className="home-nav-group">
           <Link href="/calendar">
-            <h2 className="nav-calendar">CALENDAR</h2>
+            <h2 className="home-nav-calendar">CALENDAR</h2>
           </Link>
           <Link href="/about">
-            <h2 className="nav-about">ABOUT</h2>
+            <h2 className="home-nav-about">ABOUT</h2>
           </Link>
           <Link href="/contact">
-            <h2 className="nav-contact">CONTACT</h2>
+            <h2 className="home-nav-contact">CONTACT</h2>
           </Link>
         </div>
 

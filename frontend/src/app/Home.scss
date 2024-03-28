@@ -14,7 +14,7 @@ a {
     background-color: transparent;
     overflow: hidden;
 
-    .nav {
+    &-nav {
         // background-image: url("../assets/icons/homepageLeftWhitePart.png");
         // width: 32rem;
         background-color: white;
@@ -31,6 +31,7 @@ a {
         z-index: 2;
         position: relative;
         box-shadow: 8px 5px 8px rgba(0, 0, 0, 0.2);
+        padding-top: 3rem;
 
         // .registar {
         //     background-image: url("../assets/icons/greenArrow.png");

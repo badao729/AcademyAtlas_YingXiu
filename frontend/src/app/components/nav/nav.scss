@@ -33,11 +33,12 @@ div {
     flex-direction: row;
     justify-content: space-between;
     // position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     background-color: $Green;
+    height: 6rem;
 
     &-logo {
         width: 3rem;
+        height: 3rem;
         margin: 1rem;
         margin-left: 3rem;
     }
@@ -53,7 +54,6 @@ div {
         border-radius: 30px;
         font-size: 1rem;
         font-weight: 600;
-       
         background-color: #A2C579;
         color: white;
 
