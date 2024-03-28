@@ -8,7 +8,7 @@
 // td {
 //     cursor: pointer;
 // }
-
+.ReactModal__Content.ReactModal__Content--after-open{
 button {
   border: none;
   border-radius: 5px;
@@ -65,6 +65,7 @@ input {
     border: none;
     outline: none;
   }
+}
 }
 
 .ReactModal__Content.ReactModal__Content--after-open {
