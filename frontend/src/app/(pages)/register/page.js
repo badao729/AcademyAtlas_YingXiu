@@ -49,16 +49,6 @@ export default function LoginPage() {
         setPassword('')
     }
 
-    // const handleSignIn = async () => {
-    //     const res = await supabase.auth.signInWithPassword({
-    //         email,
-    //         password
-    //     })
-    //     setUser(res.data.user)
-    //     router.refresh();
-    //     setEmail('')
-    //     setPassword('')
-    // }
 
     const handleLogout = async () => {
         await supabase.auth.signOut();

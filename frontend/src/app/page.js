@@ -6,8 +6,6 @@ import Lottie from "lottie-react"
 import arrow from "../assets/animation/arrow-animation.json"
 import start from "../assets/animation/start-animation.json"
 
-// import { useRouter } from 'next/router';
-
 
 
 export default function Home() {
@@ -25,10 +23,6 @@ export default function Home() {
 
           <Link href="/login">
             <h2 className="nav-login">Log in</h2>
-          </Link>
-
-           <Link href="/register"> 
-           <h2 className="nav-register">Register</h2>
           </Link>
         </div>
 
@@ -51,7 +45,9 @@ export default function Home() {
           </button> 
           </Link> */}
 
+        <Link href="/register">
           <Lottie animationData={start} />
+        </Link>
       </section>
 
       <section className="hero">
