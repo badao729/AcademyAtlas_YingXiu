@@ -14,7 +14,13 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
+import { createClient } from '@supabase/supabase-js'
 
+
+const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 
 export default function CalendarPage() {
@@ -46,14 +52,20 @@ export default function CalendarPage() {
     };
 
 
-    async function handleDatesSet(data) {
+
+
+
+    async function handleDatesSet(eventData) {
         try {
-            const response = await axios.get(
-                "/api/calendar/get-events?start=" +
-                moment(data.start).toISOString() +
-                "&end=" + moment(data.end).toISOString()
-            );
-            setEvent(response.data);
+            const { title, start, end } = eventData;
+            const { eventData, error } = await supabase.from('Timetable').insert([
+                {
+                    startTime: start,
+                    endTime: end,
+                    studentId:title
+                }
+            ]);
+            setEvent(eventData);
             setLoading(false);
         } catch (error) {
             console.error("Failed to fetch events", error);
