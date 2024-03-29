@@ -35,6 +35,11 @@ export default function LoginPage() {
     }, [])
 
     const handleSignIn = async () => {
+        if (!email || !password ) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
         const res = await supabase.auth.signInWithPassword({
             email,
             password

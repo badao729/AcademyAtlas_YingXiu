@@ -1,6 +1,7 @@
 'use client';
 
 import "./register.scss"
+import"../login/login.scss"
 import NavButton from "../../components/navigation/navButton";
 import loadingAnima from "../../../assets/animation/loading-animation.json"
 import success from "../../../assets/animation/success-animation.json"
@@ -38,8 +39,15 @@ export default function LoginPage() {
         getUser();
     }, [])
 
+    
 
     const handleSignUp = async () => {
+        //if validation not working
+        if (!email || !password || !firstName || !lastName || !position) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
         const res = await supabase.auth.signUp({
             email,
             password,
@@ -75,13 +83,13 @@ export default function LoginPage() {
     if (user) {
         return (
             <div className="loading-container">
-            <div className="loading-container-nav">
-                <img className="loading-container-nav-logo"
-                    src="/icons/greenAll.png"
-                    alt="logo" />
+                <div className="loading-container-nav">
+                    <img className="loading-container-nav-logo"
+                        src="/icons/greenAll.png"
+                        alt="logo" />
 
-                <div className="loading-container-nav-buttons">
-                    <NavButton />
+                    <div className="loading-container-nav-buttons">
+                        <NavButton />
 
                         <button onClick={handleLogout}>Logout</button>
                     </div>
@@ -94,6 +102,9 @@ export default function LoginPage() {
             </div>
         )
     }
+
+    
+
 
     return (
         <main>
@@ -136,7 +147,10 @@ export default function LoginPage() {
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Last Name" />
 
-                <select value={position} onChange={(e) => setPosition(e.target.value)}>
+                <select
+                    value={position}
+                    onChange={(e) => setPosition(e.target.value)}
+                >
                     <option value="">Select Position</option>
                     <option value="Teacher">Teacher</option>
                     <option value="Student">Student</option>
