@@ -8,6 +8,22 @@ PlanMyClass -
 AcademyAtlas -
 
 
+AcademyAtlas:
+Plan, Pursue, Achieve.
+Beyond Limits, Beyond Learning.
+
+
+color
+#61A3BA
+#FFFFDD
+#D2DE32
+#A2C579
+#7ab429 main AA green
+
+
+
+
+
 
 ## Overview
 
@@ -21,10 +37,10 @@ It aims to streamline administrative tasks, enhance communication between teache
 The platform needs to support two types of accounts: teachers and students.
 
 Teachers 
-- create student accounts
 - schedule classes through a calendar interface
 
 (nice to have)
+- create student accounts
 - view summaries of all student courses.
 - manage tuition fees received, generate and download invoices
 - set individual lesson prices to reflect in student balances
@@ -55,7 +71,7 @@ Targeted at small to midsize educational organizations and self-employed educato
 
 Teacher Features:
 
-1. Ability to create and manage student accounts.
+1. Ability to create and manage student accounts.(nice to have)
 2. Tracking and recording of student progress and feedback. (nice to have)
 3. Scheduling system for lessons.
 4. Financial management tools for tracking tuition payments and generating invoices.(nice to have)
@@ -65,7 +81,7 @@ Teacher Features:
 
 Student Features:
 
-1. Access to personal schedules with the ability to book lessons.
+1. Access to personal schedules with the ability to book lessons.(nice to have)
 2. Automatic email notifications for lesson booking awaiting teacher approval. (nice to have)
 3. View lesson feedback. (nice to have)
 4. Low balance alerts for tuition fees. (nice to have)
