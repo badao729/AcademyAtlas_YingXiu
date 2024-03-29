@@ -117,13 +117,22 @@
     }
 
     .forgetPW-continue {
-        font-weight: 600;
-        font-size: 1.1rem;
-        padding-top: 0.5rem;
-        color: $Green;
+       
         visibility: hidden;
         opacity: 0;
         transition: visibility 0s, opacity 0.5s linear;
+        background-color: $Green;
+        border-radius: 10px;
+        padding: 1rem;
+        padding-top: 0.5rem;
+        margin-top: 1rem;
+        >h3{
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding-top: 0.5rem;
+            color: white;
+           
+        }
     }
 
     .forgetPW:hover+.forgetPW-continue {

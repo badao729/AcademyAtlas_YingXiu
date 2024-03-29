@@ -125,7 +125,10 @@ export default function LoginPage() {
                 <button onClick={handleSignIn}>Sign In</button>
 
                 <h3 className="forgetPW">Forget Password?</h3>
-                <h3 className="forgetPW-continue">Try remember by yourself, function's under construction</h3>
+                <div className="forgetPW-continue">
+                    <h3 >Sorry, can't help you :D</h3>
+                    <h3 >The function is still under construction.</h3>
+                </div>
             </div>
         </main>
     )
