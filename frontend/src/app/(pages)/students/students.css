@@ -1,0 +1,144 @@
+@font-face {
+  font-family: "Titillium";
+  font-weight: 400;
+  src: url("../../assets/font/TitilliumWeb-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Titillium";
+  font-weight: 600;
+  src: url("../../assets/font/TitilliumWeb-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Titillium";
+  font-weight: 700;
+  src: url("../../assets/font/TitilliumWeb-Bold.ttf") format("truetype");
+}
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Titillium", Arial, Helvetica, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  font-family: "Titillium";
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 375px) {
+  h1 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 36px;
+    font-size: 28px;
+  }
+  h2 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 28px;
+    font-size: 20px;
+  }
+  h3 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 20px;
+    font-size: 13px;
+  }
+  h4 {
+    font-family: "Titillium";
+    line-height: 16px;
+    font-size: 11px;
+  }
+  p {
+    font-family: "Titillium";
+    line-height: 20px;
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 40px;
+    font-size: 32px;
+  }
+  h2 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 32px;
+    font-size: 24px;
+  }
+  h3 {
+    font-family: "Titillium";
+    font-weight: 400;
+    line-height: 30px;
+    font-size: 20px;
+  }
+  h4 {
+    font-family: "Titillium";
+    line-height: 18px;
+    font-size: 12px;
+  }
+  p {
+    font-family: "Titillium";
+    line-height: 22px;
+    font-size: 14px;
+  }
+}
+@keyframes anima-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .anima-spin {
+    animation: anima-spin infinite 20s linear;
+  }
+}
+@keyframes anima-scaleUp {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .anima-scaleUp:hover, .anima-scaleUp:active {
+    animation: anima-scaleUp 1.5s forwards;
+  }
+}
+.students {
+  background-color: rgba(252, 247, 215, 0.25);
+  height: 40rem;
+}
+.students button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.students button:hover {
+  background-color: #7ab429;
+  color: white;
+}/*# sourceMappingURL=students.css.map */

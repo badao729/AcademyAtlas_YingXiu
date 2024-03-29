@@ -5,15 +5,15 @@ import Datetime from 'react-datetime'
 import './AddClass.scss'
 import NavButton from "../../components/navigation/navButton";
 
-import { createClient } from '@supabase/supabase-js'
+// import { createClient } from '@supabase/supabase-js'
 
 
 
 
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+// const supabase = createClient(
+//     process.env.NEXT_PUBLIC_SUPABASE_URL,
+//     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+// );
 
 
 
@@ -38,21 +38,21 @@ export default function ({ isOpen, onClose, onEventAdded }) {
 
 
     useEffect(() => {
-        async function fetchStudents() {
-            const { data: User, error } = await supabase
-                .from('User')
-                .select('id, firstName') 
-                .eq('position', 'student');
+        // async function fetchStudents() {
+        //     const { data: User, error } = await supabase
+        //         .from('User')
+        //         .select('id, firstName') 
+        //         .eq('position', 'student');
 
-            if (error) {
-                console.error('Error fetching students list', error);
-                return;
-            }
+        //     if (error) {
+        //         console.error('Error fetching students list', error);
+        //         return;
+        //     }
 
-            setStudents(User);
-        }
+        //     setStudents(User);
+        // }
 
-        fetchStudents();
+        // fetchStudents();
     }, []); 
 
 

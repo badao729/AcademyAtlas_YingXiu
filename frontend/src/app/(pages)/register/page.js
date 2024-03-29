@@ -1,12 +1,12 @@
 'use client';
 
 import "./register.scss"
-import"../login/login.scss"
+import "../login/login.scss"
 import NavButton from "../../components/navigation/navButton";
 import loadingAnima from "../../../assets/animation/loading-animation.json"
 import success from "../../../assets/animation/success-animation.json"
-
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import axios from 'axios'
+// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Lottie from "lottie-react"
@@ -18,7 +18,7 @@ export default function LoginPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const [position, setPosition] = useState('');
+    const [role, setRole] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
 
@@ -27,43 +27,50 @@ export default function LoginPage() {
     const [loading, setLoading] = useState(true);
 
 
-    const supabase = createClientComponentClient();
+    // const supabase = createClientComponentClient();
 
     useEffect(() => {
         async function getUser() {
-            const { data: { user } } = await supabase.auth.getUser()
-            setUser(user)
-            setLoading(false)
+            // const { data: { user } } = await supabase.auth.getUser()
+            const localUser = localStorage.getItem('email')
+            setUser(localUser)
         }
-
+        setLoading(false)
         getUser();
     }, [])
 
-    
+
 
     const handleSignUp = async () => {
-        //if validation not working
-        if (!email || !password || !firstName || !lastName || !position) {
+        if (!email || !password || !firstName || !lastName || !role) {
             alert("Please fill in all fields.");
             return;
         }
 
-        const res = await supabase.auth.signUp({
-            email,
-            password,
-            options: {
-                emailRedirectTo: `${location.origin}/auth/callback`
-            }
-        })
-        setUser(res.data.user)
+        const { data } = await axios.post(
+            `http://localhost:8000/register`,
+            {
+                email,
+                password,
+                firstName,
+                lastName,
+                role,
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        setUser(data.email)
+        localStorage.setItem('email', data.email)
         router.refresh();
         setEmail('')
         setPassword('')
     }
 
-
     const handleLogout = async () => {
-        await supabase.auth.signOut();
+        // await supabase.auth.signOut();
+        localStorage.removeItem('email')
         router.refresh();
         setUser(null)
     }
@@ -103,7 +110,7 @@ export default function LoginPage() {
         )
     }
 
-    
+
 
 
     return (
@@ -148,8 +155,8 @@ export default function LoginPage() {
                     placeholder="Last Name" />
 
                 <select
-                    value={position}
-                    onChange={(e) => setPosition(e.target.value)}
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
                 >
                     <option value="">Select Position</option>
                     <option value="Teacher">Teacher</option>

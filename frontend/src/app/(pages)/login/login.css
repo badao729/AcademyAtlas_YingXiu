@@ -1,0 +1,262 @@
+@font-face {
+  font-family: "Titillium";
+  font-weight: 400;
+  src: url("../../assets/font/TitilliumWeb-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Titillium";
+  font-weight: 600;
+  src: url("../../assets/font/TitilliumWeb-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Titillium";
+  font-weight: 700;
+  src: url("../../assets/font/TitilliumWeb-Bold.ttf") format("truetype");
+}
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Titillium", Arial, Helvetica, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  font-family: "Titillium";
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 375px) {
+  h1 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 36px;
+    font-size: 28px;
+  }
+  h2 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 28px;
+    font-size: 20px;
+  }
+  h3 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 20px;
+    font-size: 13px;
+  }
+  h4 {
+    font-family: "Titillium";
+    line-height: 16px;
+    font-size: 11px;
+  }
+  p {
+    font-family: "Titillium";
+    line-height: 20px;
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 40px;
+    font-size: 32px;
+  }
+  h2 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 32px;
+    font-size: 24px;
+  }
+  h3 {
+    font-family: "Titillium";
+    font-weight: 400;
+    line-height: 30px;
+    font-size: 20px;
+  }
+  h4 {
+    font-family: "Titillium";
+    line-height: 18px;
+    font-size: 12px;
+  }
+  p {
+    font-family: "Titillium";
+    line-height: 22px;
+    font-size: 14px;
+  }
+}
+@keyframes anima-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .anima-spin {
+    animation: anima-spin infinite 20s linear;
+  }
+}
+@keyframes anima-scaleUp {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .anima-scaleUp:hover, .anima-scaleUp:active {
+    animation: anima-scaleUp 1.5s forwards;
+  }
+}
+.anima-loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-container {
+  padding-right: 0;
+}
+.loading-container-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  padding: 2rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.loading-container-nav-logo {
+  width: 3rem;
+}
+.loading-container-nav-buttons {
+  position: absolute;
+  top: 2.8rem;
+  right: 2rem;
+}
+.loading-container-nav-buttons button {
+  margin-right: 1rem;
+}
+.loading-container-nav-buttons button:hover {
+  background-color: #7ab429;
+  color: white;
+}
+.loading-container-nav button {
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+}
+.form-container .form-title {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+.form-container input {
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  border: none;
+  background-color: #f3f2f2;
+  width: 18rem;
+  margin: 0.8rem 0;
+  color: #22360f;
+  font-size: 600;
+}
+.form-container input::-moz-placeholder {
+  padding-left: 0.5rem;
+}
+.form-container input::placeholder {
+  padding-left: 0.5rem;
+}
+.form-container input:hover, .form-container input:active .form-container input:focus {
+  background-color: #cde2b8;
+}
+.form-container input:hover::-moz-placeholder, .form-container input:active .form-container input:focus::-moz-placeholder {
+  color: white;
+  padding-left: 0.5rem;
+}
+.form-container input:hover::placeholder, .form-container input:active .form-container input:focus::placeholder {
+  color: white;
+  padding-left: 0.5rem;
+}
+.form-container input:focus {
+  border: none;
+  outline: none;
+}
+.form-container button {
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.form-container button:hover {
+  background-color: #7ab429;
+  color: white;
+}
+.form-container .forgetPW {
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding-top: 0.5rem;
+  color: #7ab429;
+}
+.form-container .forgetPW-continue {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  background-color: #7ab429;
+  border-radius: 10px;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+}
+.form-container .forgetPW-continue > h3 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding-top: 0.5rem;
+  color: white;
+}
+.form-container .forgetPW:hover + .forgetPW-continue {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.anima-success {
+  width: 15rem;
+}
+
+.logged-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8rem;
+}/*# sourceMappingURL=login.css.map */

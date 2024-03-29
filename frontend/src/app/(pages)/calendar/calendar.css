@@ -1,0 +1,164 @@
+@font-face {
+  font-family: "Titillium";
+  font-weight: 400;
+  src: url("../../assets/font/TitilliumWeb-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Titillium";
+  font-weight: 600;
+  src: url("../../assets/font/TitilliumWeb-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Titillium";
+  font-weight: 700;
+  src: url("../../assets/font/TitilliumWeb-Bold.ttf") format("truetype");
+}
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Titillium", Arial, Helvetica, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  font-family: "Titillium";
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 375px) {
+  h1 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 36px;
+    font-size: 28px;
+  }
+  h2 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 28px;
+    font-size: 20px;
+  }
+  h3 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 20px;
+    font-size: 13px;
+  }
+  h4 {
+    font-family: "Titillium";
+    line-height: 16px;
+    font-size: 11px;
+  }
+  p {
+    font-family: "Titillium";
+    line-height: 20px;
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 40px;
+    font-size: 32px;
+  }
+  h2 {
+    font-family: "Titillium";
+    font-weight: 600;
+    line-height: 32px;
+    font-size: 24px;
+  }
+  h3 {
+    font-family: "Titillium";
+    font-weight: 400;
+    line-height: 30px;
+    font-size: 20px;
+  }
+  h4 {
+    font-family: "Titillium";
+    line-height: 18px;
+    font-size: 12px;
+  }
+  p {
+    font-family: "Titillium";
+    line-height: 22px;
+    font-size: 14px;
+  }
+}
+@keyframes anima-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .anima-spin {
+    animation: anima-spin infinite 20s linear;
+  }
+}
+@keyframes anima-scaleUp {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .anima-scaleUp:hover, .anima-scaleUp:active {
+    animation: anima-scaleUp 1.5s forwards;
+  }
+}
+.calendar-container {
+  background-color: rgba(252, 247, 215, 0.25);
+}
+.calendar-container .addClass {
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.2rem 1rem;
+  width: 8rem;
+  background-color: #7ab429;
+  padding: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: 3rem;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.calendar-container .addClass:hover {
+  background-color: rgb(243, 243, 242);
+  color: rgb(16, 156, 3);
+  font-weight: 700;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.calendar-container .fullCalender {
+  padding: 0 3rem;
+}
+.calendar-container .fullCalender .fc-toolbar-chunk,
+.calendar-container .fullCalender .fc-button-group {
+  padding-right: 0;
+}
+.calendar-container .fullCalender button.fc-timeGridDay-button.fc-button.fc-button-primary.fc-button-active,
+.calendar-container .fullCalender button.fc-timeGridDay-button.fc-button.fc-button-primary {
+  width: 4rem;
+}
+.calendar-container .fullCalender .fc-timegrid-axis-frame.fc-scrollgrid-shrink-frame.fc-timegrid-axis-frame-liquid {
+  padding-right: 0;
+}/*# sourceMappingURL=calendar.css.map */

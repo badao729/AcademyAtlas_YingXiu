@@ -5,13 +5,12 @@ import NavButton from "../../components/navigation/navButton";
 import loadingAnima from "../../../assets/animation/loading-animation.json"
 import success from "../../../assets/animation/success-animation.json"
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Lottie from "lottie-react"
 import Link from "next/link";
-
-
+import axios from 'axios'
 
 export default function LoginPage() {
     const [email, setEmail] = useState('')
@@ -22,46 +21,54 @@ export default function LoginPage() {
     const [loading, setLoading] = useState(true);
 
 
-    const supabase = createClientComponentClient();
+    // const supabase = createClientComponentClient();
 
     useEffect(() => {
         async function getUser() {
-            const { data: { user } } = await supabase.auth.getUser()
-            setUser(user)
-            setLoading(false)
-        }
+            // const { data: { user } } = await supabase.auth.getUser()
+            const localUser = localStorage.getItem('email')
+            setUser(localUser)
 
+        }
+        setLoading(false)
         getUser();
     }, [])
 
     const handleSignIn = async () => {
-        if (!email || !password ) {
+        if (!email || !password) {
             alert("Please fill in all fields.");
             return;
         }
 
-        const res = await supabase.auth.signInWithPassword({
-            email,
-            password
-        })
-        setUser(res.data.user)
+        // const res = await supabase.auth.signInWithPassword({
+        //     email,
+        //     password
+        // })
+        const { data } = await axios.post(
+            `http://localhost:8000/login`,
+            {
+                email,
+                password,
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        console.log('data:', data)
+        setUser(data.email)
+        localStorage.setItem('email', email)
         router.refresh();
         setEmail('')
         setPassword('')
     }
 
     const handleLogout = async () => {
-        await supabase.auth.signOut();
+        localStorage.removeItem('email')
+        // await supabase.auth.signOut();
         router.refresh();
         setUser(null)
     }
-
-
-
-    console.log({ loading, user })
-
-
-
 
     if (loading) {
         return (
