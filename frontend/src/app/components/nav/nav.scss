@@ -15,9 +15,6 @@ a {
     text-decoration: none;
 }
 
-div {
-    padding-right: 2rem;
-}
 
 
 .anima-loading {
@@ -37,6 +34,11 @@ div {
     height: 5.5rem;
     box-shadow: 8px 5px 8px rgba(0, 0, 0, 0.2);
     padding-top: 1.3rem;
+
+    div {
+        padding-right: 2rem;
+    }
+    
 
     &-logo {
         width: 3rem;

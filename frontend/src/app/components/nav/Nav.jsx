@@ -9,9 +9,12 @@ export default function Nav() {
     return (
         <section className="navigation">
 
-            <img className="navigation-logo"
-                src="/icons/whiteAll.png"
-                alt="logo" />
+            <Link href="/">
+                <img className="navigation-logo"
+                    src="/icons/whiteAll.png"
+                    alt="logo" />
+            </Link>
+            
             <div className="button-container">
                 <div>
                     <Link href="/"><button>HOME</button></Link>

@@ -46,10 +46,6 @@ export default function CalendarPage() {
     };
 
 
-    // async function handleEventAdd(data) {
-    //     await axios.post("/api/calendar/create-event", data.event)
-    // }
-
     async function handleDatesSet(data) {
         try {
             const response = await axios.get(

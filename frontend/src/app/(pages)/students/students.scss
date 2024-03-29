@@ -7,5 +7,21 @@
     background-color: rgba(252, 247, 215, 0.25) ;
     height: 40rem;
 
+    button {
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 15px;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    
+        &:hover {
+            background-color: $Green;
+            color: white;
+        }
+    }
+
 
 }

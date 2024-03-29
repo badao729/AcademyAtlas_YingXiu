@@ -27,10 +27,13 @@ export default function ({ isOpen, onClose, onEventAdded }) {
     return (
         <Modal isOpen={isOpen} onRequestClose={onClose}>
             <form onSubmit={onSubmit}>
-                <input
+                <select
                     placeholder="Student Name"
                     value={title}
-                    onChange={e => setTitle(e.target.value)} />
+                    onChange={e => setTitle(e.target.value)}>
+                    <option value="">Select a Student</option>
+                    <option value="">Student1</option>
+                </select>
 
                 <div>
                     <label>Start:</label>
@@ -47,7 +50,7 @@ export default function ({ isOpen, onClose, onEventAdded }) {
                 </div>
 
                 <button>Add Class</button>
-                <NavButton/>
+                <NavButton />
             </form>
         </Modal>
     )

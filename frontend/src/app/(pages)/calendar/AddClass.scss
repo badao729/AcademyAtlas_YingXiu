@@ -8,64 +8,64 @@
 // td {
 //     cursor: pointer;
 // }
-.ReactModal__Content.ReactModal__Content--after-open{
-button {
-  border: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 0.2rem 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
-  background-color: #A2C579;
-  color: white;
+.ReactModal__Content.ReactModal__Content--after-open {
+  button {
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.2rem 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    background-color: #A2C579;
+    color: white;
 
-  &:hover {
-    background-color: #f6fcea;
-    color: black;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    &:hover {
+      background-color: #f6fcea;
+      color: black;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
   }
 
-}
-
-label {
-  font-weight: 700;
-  color: #417c0b;
-  font-size: 1.1rem;
-}
-
-input {
-  padding: 0.3rem 1rem;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  border: none;
-  background-color: #f3f2f2;
-  margin: 0.8rem 0;
-  color: #22360f;
-  font-size: 1.1rem;
-  font-weight: 600;
-  width: 15.9rem;
-
-  &::placeholder {
-    padding-left: 0.5rem;
+  label {
+    font-weight: 700;
+    color: #417c0b;
+    font-size: 1.1rem;
   }
 
-  &:hover,
-  &:active &:focus {
-    background-color: #cde2b8;
-    // color:rgb(0, 0, 0);
+  input,select {
+    padding: 0.3rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #f3f2f2;
+    margin: 0.8rem 0;
+    color: #22360f;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 15.9rem;
 
     &::placeholder {
-      color: white;
       padding-left: 0.5rem;
     }
-  }
 
-  &:focus {
-    border: none;
-    outline: none;
+    &:hover,
+    &:active &:focus {
+      background-color: #cde2b8;
+      // color:rgb(0, 0, 0);
+
+      &::placeholder {
+        color: white;
+        padding-left: 0.5rem;
+      }
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
   }
-}
 }
 
 .ReactModal__Content.ReactModal__Content--after-open {

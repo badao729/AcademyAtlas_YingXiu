@@ -9,43 +9,43 @@
     transform: translate(-50%, -50%);
 }
 
-.loading-container{
+.loading-container {
     padding-right: 0;
-}
 
-.nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    position: relative;
-    padding: 2rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    &-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        padding: 2rem 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 
-    &-logo {
-        width: 3rem;
-    }
+        &-logo {
+            width: 3rem;
+        }
 
-    &-buttons {
-        position: absolute;
-        top: 2.8rem;
-        right: 2rem;
+        &-buttons {
+            position: absolute;
+            top: 2.8rem;
+            right: 2rem;
 
-        button {
-            margin-right: 1rem;
+            button {
+                margin-right: 1rem;
 
-            &:hover {
-                background-color: $Green;
-                color: white;
+                &:hover {
+                    background-color: $Green;
+                    color: white;
+                }
             }
         }
-    }
 
-    button {
-        border: none;
-        padding: 0.7rem 2rem;
-        border-radius: 30px;
-        font-size: 1rem;
-        font-weight: 600;
+        button {
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
     }
 }
 
@@ -117,7 +117,7 @@
     }
 
     .forgetPW-continue {
-       
+
         visibility: hidden;
         opacity: 0;
         transition: visibility 0s, opacity 0.5s linear;
@@ -126,12 +126,13 @@
         padding: 1rem;
         padding-top: 0.5rem;
         margin-top: 1rem;
-        >h3{
+
+        >h3 {
             font-weight: 600;
             font-size: 1.1rem;
             padding-top: 0.5rem;
             color: white;
-           
+
         }
     }
 

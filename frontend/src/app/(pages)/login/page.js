@@ -69,12 +69,12 @@ export default function LoginPage() {
     if (user) {
         return (
             <div className="loading-container">
-                <div className="nav">
-                    <img className="nav-logo"
+                <div className="loading-container-nav">
+                    <img className="loading-container-nav-logo"
                         src="/icons/greenAll.png"
                         alt="logo" />
 
-                    <div className="nav-buttons">
+                    <div className="loading-container-nav-buttons">
                         <NavButton />
 
                         <button onClick={handleLogout}>Logout</button>
@@ -93,17 +93,16 @@ export default function LoginPage() {
 
     return (
         <main className="login">
-            <div className="nav">
-                <img className="nav-logo"
+            <div className="loading-container-nav">
+                <img className="loading-container-nav-logo"
                     src="/icons/greenAll.png"
                     alt="logo" />
 
-                <div className="nav-buttons">
+                <div className="loading-container-nav-buttons">
                     <NavButton />
                     <Link href="/register">
                         <button>Sign Up</button>
                     </Link>
-
                 </div>
             </div>
 
