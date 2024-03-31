@@ -3,16 +3,16 @@ import Link from "next/link";
 import './nav.scss';
 import Lottie from "lottie-react";
 import avatarAnima from "../../../assets/animation/avatar-animation.json";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 
 
 export default function Nav() {
     const [userName, setUserName] = useState("")
 
-    useEffect(()=>{
+    useEffect(() => {
         const email = localStorage.getItem('email') || "User";
-        setUserName(email.slice(0, 8)); 
+        setUserName(email.slice(0, 8));
     }, []);
 
 
@@ -54,6 +54,9 @@ export default function Nav() {
                 </div>
                 <div className="button-container-contact">
                     <Link href="/contact"><button>CONTACT</button></Link>
+                </div>
+                <div className="button-container-login">
+                    <Link href="/login"><button>Login</button></Link>
                 </div>
 
                 <div className="nav-avater">
