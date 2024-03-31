@@ -140,13 +140,14 @@ button {
 .about-body {
   padding-top: 6rem;
   padding-bottom: 3rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 .about-body .anima-shiba {
   width: 15rem;
 }
 .about-body .ying {
   padding-top: 3.5rem;
-  padding-left: 5rem;
 }
 .about-body .ying-img {
   width: 10rem;
@@ -155,4 +156,8 @@ button {
 }
 .about-body .ying-img:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.about-body .shiba {
+  display: flex;
+  justify-content: flex-end;
 }/*# sourceMappingURL=about.css.map */

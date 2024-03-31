@@ -4,8 +4,8 @@ import Datetime from 'react-datetime'
 
 import './AddClass.scss'
 import NavButton from "../../components/navigation/navButton";
-
-// import { createClient } from '@supabase/supabase-js'
+import axios from 'axios'
+import '../../../styles/partials/_datetime.scss'
 
 
 
@@ -34,25 +34,25 @@ export default function ({ isOpen, onClose, onEventAdded }) {
             end
         })
         onClose();
+        location.reload()
     }
 
 
     useEffect(() => {
-        // async function fetchStudents() {
-        //     const { data: User, error } = await supabase
-        //         .from('User')
-        //         .select('id, firstName') 
-        //         .eq('position', 'student');
-
-        //     if (error) {
-        //         console.error('Error fetching students list', error);
-        //         return;
-        //     }
-
-        //     setStudents(User);
-        // }
-
-        // fetchStudents();
+        async function fetchStudents() {
+            const { data } = await axios.get(
+                `http://localhost:8000/users`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            console.log('student data:', data)
+            const studentLists = []
+            data.map(student => studentLists.push(`${student.firstName} ${student.lastName}`))
+            setStudents(studentLists)
+        }
+        fetchStudents();
     }, []); 
 
 
@@ -67,16 +67,15 @@ export default function ({ isOpen, onClose, onEventAdded }) {
 
                     <option value="">Select a Student</option>
 
-                    {students.map((student) => (
+                    {students?.map((student, index) => (
                         <option
-                            key={student.id}
-                            value={student.firstName}
+                            key={index}
+                            value={student}
                         >
-                            {student.firstName}
+                            {student}
                         </option>
                     ))}
 
-                    <option value="student1">student1</option>
                 </select>
 
                 <div>

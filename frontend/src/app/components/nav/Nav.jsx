@@ -11,8 +11,8 @@ export default function Nav() {
     const [userName, setUserName] = useState("")
 
     useEffect(() => {
-        const email = localStorage.getItem('email') || "User";
-        setUserName(email.slice(0, 8));
+        const avatarUser = localStorage.getItem('user') || "User";
+        setUserName(avatarUser.slice(0, 8));
     }, []);
 
 
@@ -62,6 +62,7 @@ export default function Nav() {
                 <div className="nav-avater">
                     <Lottie className="nav-avater-animation" animationData={avatarAnima} />
                 </div>
+                
                 <div className="button-container-logout">
                     <div className="user-name">{userName}</div>
                     <button className="logout-button" onClick={handleLogout}>Logout</button>

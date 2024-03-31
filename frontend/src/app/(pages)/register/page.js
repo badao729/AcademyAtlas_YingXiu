@@ -63,6 +63,8 @@ export default function LoginPage() {
             })
         setUser(data.email)
         localStorage.setItem('email', data.email)
+        const {firstName, lastName} = data
+        localStorage.setItem('user', `${firstName} ${lastName}`)
         router.refresh();
         setEmail('')
         setPassword('')

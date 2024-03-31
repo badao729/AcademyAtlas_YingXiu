@@ -17,7 +17,10 @@ const About = () => {
                         src="/photo/Ying.jpeg"
                         alt="logo" />
                 </div>
-                <Lottie className="anima-shiba" animationData={shiba} />
+
+                <div className="shiba">
+                    <Lottie className="anima-shiba" animationData={shiba} />
+                    </div>
 
 
             </div>
