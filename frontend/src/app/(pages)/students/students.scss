@@ -3,25 +3,226 @@
 @use"../../../styles/partials/animation" as *;
 
 
-.students{
-    background-color: rgba(252, 247, 215, 0.25) ;
-    height: 40rem;
+.students {
+    background-color: rgba(252, 247, 215, 0.25);
 
-    button {
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 15px;
-        font-size: 1rem;
-        font-weight: 600;
-        margin-top: 1.5rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    
-        &:hover {
-            background-color: $Green;
-            color: white;
+    .button-container-students {
+        display: none;
+    }
+
+    .button-container {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        padding-right: 0.5rem;
+
+        .excel-button,
+        .invoice-button {
+            margin: 0;
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
         }
     }
 
+    &-body {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-top: 8rem;
+        padding-bottom: 3rem;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
 
+        button {
+            border: none;
+            padding: 0.3rem 0.5rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+            &:hover {
+                background-color: $Green;
+                color: white;
+            }
+        }
+
+        .students-list {
+            background-color: white;
+            border: 1px solid $Light-green;
+            border-radius: 5px;
+            padding: 0.5rem;
+            padding-bottom: 1rem;
+            margin-right: 0.5rem;
+            width: 180px;
+
+            &-title {
+                padding-bottom: 0.5rem;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                padding-top: 0.5rem;
+            }
+
+            &:hover {
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+                border: none;
+            }
+
+            .students-name {
+                cursor: pointer;
+                padding-left: 1rem;
+
+                &:hover {
+                    background-color: $Green;
+                    border-radius: 3px;
+                    color: white;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+                }
+            }
+        }
+
+        .course-records {
+            background-color: white;
+            border: 1px solid $Light-green;
+            border-radius: 5px;
+            padding: 0.5rem;
+            width: 15rem;
+            margin-right: 0.5rem;
+
+            &-title {
+                padding-bottom: 0.5rem;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                padding-top: 0.5rem;
+
+            }
+
+            &:hover {
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+                border: none;
+            }
+
+            &-info {
+                height: 20rem;
+                padding-bottom: 0.5rem;
+                display: flex;
+                flex-direction: row;
+                background-color: #fafdec;
+                padding-top: 0.5rem;
+                border-radius: 5px;
+                border: 1px solid $Light-green;
+
+                >div {
+                    padding-right: 0.3rem;
+                }
+            }
+
+            &-info,
+            .course-hour {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+
+            }
+
+            .course-hour-title {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            .course-hour {
+                background-color: #fafdec;
+                border-radius: 5px;
+                border: 1px solid $Light-green;
+                margin-bottom: 0.5rem;
+                margin-top: 0.5rem;
+            }
+        }
+
+        .student-payments {
+            background-color: white;
+            border: 1px solid $Light-green;
+            border-radius: 5px;
+            padding: 0.5rem;
+            width: 15rem;
+
+            &-title {
+                padding-bottom: 0.5rem;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                padding-top: 0.5rem;
+
+            }
+
+            &:hover {
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+                border: none;
+            }
+
+            &-info {
+                height: 15rem;
+                padding-bottom: 0.5rem;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                background-color: #fafdec;
+                padding-top: 0.5rem;
+                border-radius: 5px;
+                border: 1px solid $Light-green;
+
+                >div {
+                    padding-right: 0.3rem;
+                }
+            }
+
+            .unit-price-title {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            .unit-price-amount {
+                background-color: #fafdec;
+                border-radius: 5px;
+                border: 1px solid $Light-green;
+                margin-bottom: 0.5rem;
+                margin-top: 0.5rem;
+                padding-left: 0.5rem;
+            }
+
+            .price-input {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+
+                input {
+                    background-color: #fafdec;
+                    border-radius: 5px;
+                    border: 1px solid $Light-green;
+                    padding-left: 0.5rem;
+                    padding: 0.3rem 0.5rem;
+                    margin-right: 0.5rem;
+
+                    &:focus {
+                        outline: $Green solid 2px;
+                        background-color: $Light-green;
+                    }
+                }
+
+                button {
+                    margin: 0;
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+
+
+
+    }
 }

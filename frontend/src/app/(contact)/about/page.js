@@ -1,12 +1,27 @@
-import NavButton from "../../components/navigation/navButton"
+'use client'
+import "./about.scss"
+import Nav from '../../components/nav/Nav';
+import Lottie from "lottie-react"
+import shiba from "../../../assets/animation/shiba-animation.json"
+
+
 
 
 const About = () => {
     return (
-        <>
-            <NavButton />
-            <div>about</div>
-        </>
+        <article className="about">
+            <Nav />
+            <div className="about-body">
+                <div className="ying">
+                    <img className="ying-img anima-scaleUp"
+                        src="/photo/Ying.jpeg"
+                        alt="logo" />
+                </div>
+                <Lottie className="anima-shiba" animationData={shiba} />
+
+
+            </div>
+        </article>
     )
 }
 

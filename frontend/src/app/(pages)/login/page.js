@@ -40,10 +40,6 @@ export default function LoginPage() {
             return;
         }
 
-        // const res = await supabase.auth.signInWithPassword({
-        //     email,
-        //     password
-        // })
         const { data } = await axios.post(
             `http://localhost:8000/login`,
             {
@@ -65,7 +61,6 @@ export default function LoginPage() {
 
     const handleLogout = async () => {
         localStorage.removeItem('email')
-        // await supabase.auth.signOut();
         router.refresh();
         setUser(null)
     }
@@ -88,7 +83,6 @@ export default function LoginPage() {
 
                     <div className="loading-container-nav-buttons">
                         <NavButton />
-
                         <button onClick={handleLogout}>Logout</button>
                     </div>
                 </div>

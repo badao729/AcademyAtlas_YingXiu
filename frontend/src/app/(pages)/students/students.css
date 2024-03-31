@@ -27,6 +27,13 @@ body {
   box-sizing: border-box;
 }
 
+.anima-loading, .anima-tbc {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 button {
   cursor: pointer;
 }
@@ -126,19 +133,188 @@ button {
 }
 .students {
   background-color: rgba(252, 247, 215, 0.25);
-  height: 40rem;
 }
-.students button {
+.students .button-container-students {
+  display: none;
+}
+.students .button-container {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding-right: 0.5rem;
+}
+.students .button-container .excel-button,
+.students .button-container .invoice-button {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.students-body {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+}
+.students-body button {
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 15px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
-.students button:hover {
+.students-body button:hover {
   background-color: #7ab429;
   color: white;
+}
+.students-body .students-list {
+  background-color: white;
+  border: 1px solid #A2C579;
+  border-radius: 5px;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  margin-right: 0.5rem;
+  width: 180px;
+}
+.students-body .students-list-title {
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+}
+.students-body .students-list:hover {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+.students-body .students-list .students-name {
+  cursor: pointer;
+  padding-left: 1rem;
+}
+.students-body .students-list .students-name:hover {
+  background-color: #7ab429;
+  border-radius: 3px;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.students-body .course-records {
+  background-color: white;
+  border: 1px solid #A2C579;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 15rem;
+  margin-right: 0.5rem;
+}
+.students-body .course-records-title {
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+}
+.students-body .course-records:hover {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+.students-body .course-records-info {
+  height: 20rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  background-color: #fafdec;
+  padding-top: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #A2C579;
+}
+.students-body .course-records-info > div {
+  padding-right: 0.3rem;
+}
+.students-body .course-records-info,
+.students-body .course-records .course-hour {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.students-body .course-records .course-hour-title {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.students-body .course-records .course-hour {
+  background-color: #fafdec;
+  border-radius: 5px;
+  border: 1px solid #A2C579;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.students-body .student-payments {
+  background-color: white;
+  border: 1px solid #A2C579;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 15rem;
+}
+.students-body .student-payments-title {
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+}
+.students-body .student-payments:hover {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+.students-body .student-payments-info {
+  height: 15rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fafdec;
+  padding-top: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #A2C579;
+}
+.students-body .student-payments-info > div {
+  padding-right: 0.3rem;
+}
+.students-body .student-payments .unit-price-title {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.students-body .student-payments .unit-price-amount {
+  background-color: #fafdec;
+  border-radius: 5px;
+  border: 1px solid #A2C579;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+.students-body .student-payments .price-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.students-body .student-payments .price-input input {
+  background-color: #fafdec;
+  border-radius: 5px;
+  border: 1px solid #A2C579;
+  padding-left: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  margin-right: 0.5rem;
+}
+.students-body .student-payments .price-input input:focus {
+  outline: #7ab429 solid 2px;
+  background-color: #A2C579;
+}
+.students-body .student-payments .price-input button {
+  margin: 0;
+  margin-right: 0.5rem;
 }/*# sourceMappingURL=students.css.map */

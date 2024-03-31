@@ -1,0 +1,25 @@
+@use "../../../styles/partials/global" as *;
+@use "../../../styles/partials/variables" as *;
+@use"../../../styles/partials/animation" as *;
+
+
+
+.contact {
+    background-color: rgba(252, 247, 215, 0.25);
+
+
+    .button-container-contact {
+        display: none
+    }
+
+    .anima-tbc {
+        height: 15rem;
+    }
+
+    &-body {
+        padding-top: 6rem;
+
+    }
+
+
+}

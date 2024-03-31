@@ -1,0 +1,124 @@
+@use "../../../styles/partials/global" as *;
+@use "../../../styles/partials/variables" as *;
+@use"../../../styles/partials/animation" as *;
+@use"../../../styles/partials/datetime" as *;
+
+
+
+
+.tuition {
+    background-color: rgba(252, 247, 215, 0.25);
+    padding-bottom: 3rem;
+
+    .button-container-tuition {
+        display: none
+    }
+
+    &-body {
+        padding-top: 6rem;
+
+    }
+
+    input {
+        padding: 0.3rem 1rem;
+        border-radius: 5px;
+        border: none;
+        background-color: #f3f2f2;
+        margin: 0.8rem 0;
+        color: #22360f;
+        font-size: 1rem;
+        font-weight: 600;
+        width: 9rem;
+
+        &::placeholder {
+            padding-left: 0.5rem;
+        }
+
+        &:hover,
+        &:active &:focus {
+            background-color: #cde2b8;
+
+            &::placeholder {
+                color: white;
+                padding-left: 0.5rem;
+            }
+        }
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+
+    .date-range {
+        padding-left: 1rem;
+        padding-top: 1rem;
+
+        &-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            label {
+                padding: 0 0.5rem;
+
+            }
+        }
+
+        &-title {
+            padding-left: 0.5rem;
+        }
+    }
+
+    .payment-summary {
+        background-color: white;
+        border: 1px solid $Light-green;
+        border-radius: 5px;
+        padding: 1rem 0.5rem;
+        margin: 1rem 1.5rem;
+
+        .transaction {
+            display: flex;
+            flex-direction: row;
+            padding-top: 0.5rem;
+
+            >h3 {
+                padding-left: 1rem;
+                width: 33.3%;
+                color: $Green;
+                font-weight: 600;
+            }
+
+            >h4 {
+                padding-left: 1rem;
+                width: 33.3%;
+                font-size: 0.9rem;
+            }
+        }
+
+        .hst {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            padding-right: 0.5rem;
+
+            >h2 {
+                padding-left: 1rem;
+            }
+        }
+
+        .total-payment {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            padding-right: 0.5rem;
+
+
+            >h2 {
+                padding-left: 1rem;
+            }
+        }
+
+    }
+
+}

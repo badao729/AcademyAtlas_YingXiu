@@ -1,5 +1,6 @@
 'use client'
 
+import Nav from '../../components/nav/Nav';
 
 import loadingAnima from "../../../assets/animation/loading-animation.json"
 import './calendar.scss'
@@ -14,27 +15,20 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
-// import { createClient } from '@supabase/supabase-js'
 
-
-// const supabase = createClient(
-//     process.env.NEXT_PUBLIC_SUPABASE_URL,
-//     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-// );
 
 
 export default function CalendarPage() {
 
     const [modalOpen, setModalOpen] = useState(false)
-    // const [event, setEvent] = useState([])
     const [events, setEvents] = useState([]);
     const calendarRef = useRef(null);
-
+    const [selectedEventId, setSelectedEventId] = useState("")
     const [loading, setLoading] = useState(true);
-
     const headers = {
         'Content-Type': 'application/json'
     }
+
 
     useEffect(() => {
         handleDatesSet({
@@ -43,12 +37,13 @@ export default function CalendarPage() {
         });
     }, []);
 
+
     useEffect(() => {
         let calendarApi = calendarRef.current?.getApi();
         console.log("calendarApi:", calendarApi)
 
         const getAllEvents = async () => {
-            const { data } = await axios.get('http://localhost:8000/events', {headers})
+            const { data } = await axios.get('http://localhost:8000/events', { headers })
             console.log('data:', data)
             const myEvent = []
             data?.map(event => {
@@ -57,13 +52,19 @@ export default function CalendarPage() {
                     end: event["end_time"],
                     title: event["event_name"]
                 }
-                // calendarApi?.addEvent(customEvent);
                 myEvent.push(customEvent)
             })
             setEvents(myEvent)
         }
         getAllEvents()
     }, [])
+
+
+
+    const handleSelectChange = (e) => {
+        setSelectedEventId(e.target.value);
+    }
+
 
 
     const onEventAdded = async event => {
@@ -82,20 +83,47 @@ export default function CalendarPage() {
     async function handleDatesSet(eventData) {
         try {
             const { title, start, end } = eventData;
-            // const { eventData, error } = await supabase.from('Timetable').insert([
-            //     {
-            //         startTime: start,
-            //         endTime: end,
-            //         studentId: title
-            //     }
-            // ]);
-            // setEvent(eventData);
             setLoading(false);
         } catch (error) {
             console.error("Failed to fetch events", error);
             setLoading(false);
         }
     }
+
+
+    async function handleEventAdd() {
+        const dbParams = {
+            "event_name": localStorage.getItem('email'),
+            "start_time": moment(event.start).toDate(),
+            "end_time": moment(event.end).toDate(),
+        }
+
+        const { data } = await axios.post("http://localhost:8000/events", dbParams, { headers })
+
+        console.log(data)
+    }
+
+
+    async function handleDeleteEvent() {
+        if (!selectedEventId) {
+            alert('Please select an event to delete.');
+            return;
+        }
+
+        try {
+            const response = await axios
+                .delete(`http://localhost:8000/events/${selectedEventId}`);
+            if (response.status === 200) {
+                alert('Event deleted successfully');
+                setEvents(events.filter(event => event.event_id !== selectedEventId));
+                setSelectedEventId('');
+            }
+        } catch (error) {
+            console.error('Error deleting event:', error);
+            alert('Failed to delete the event');
+        }
+    };
+
 
     if (loading) {
         return (
@@ -119,19 +147,6 @@ export default function CalendarPage() {
 
     // };
 
-    async function handleEventAdd() {
-        const dbParams = {
-            "event_name": localStorage.getItem('email'),
-            "start_time": moment(event.start).toDate(),
-            "end_time": moment(event.end).toDate(),
-        }
-
-
-        const { data } = await axios.post("http://localhost:8000/events", dbParams, {headers})
-
-        console.log(data)
-    }
-
     // async function handleDatesSet(data) {
     //     const response = await axios.get(
     //         "/api/calendar/get-events?start=" 
@@ -140,23 +155,41 @@ export default function CalendarPage() {
     //         )
     //     setEvent(response.data)
     // }
-
-
-    // if (loading) {
-    //     return (
-    //         <>
-    //             <Lottie className="anima-loading" animationData={loadingAnima} />
-    //         </>
-    //     )
-    // }
     //原始数据
 
 
 
     return (
         <article className="calendar">
+                     <Nav />
+
             <div className="calendar-container">
-                <button className="addClass" onClick={() => setModalOpen(true)}>Add Class</button>
+                <div className="events-editing-container">
+                    <button
+                        className="add-class"
+                        onClick={() => setModalOpen(true)}
+                    >
+                        Add Class
+                    </button>
+
+                    <select
+                        onChange={handleSelectChange}
+                        value={selectedEventId}
+                    >
+                        <option value="">Select an class</option>
+                        {events.map((event) => (
+                            <option key={event.event_id} value={event.event_id}>
+                                {`${event.title} - ${moment(event.start).format('ddd M/D H:mm')} to ${moment(event.end).format('H:mm')}`}                                </option>
+                        ))}
+                    </select>
+
+                    <button
+                        className="delete-class"
+                        onClick={handleDeleteEvent}
+                    >
+                        Delete Class
+                    </button>
+                </div>
 
                 <div className='fullCalender' style={{ position: "relative", zIndex: 0 }}>
                     <Fullcalendar

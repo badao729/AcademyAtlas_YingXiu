@@ -27,6 +27,13 @@ body {
   box-sizing: border-box;
 }
 
+.anima-loading, .anima-tbc {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 button {
   cursor: pointer;
 }
@@ -124,10 +131,20 @@ button {
     animation: anima-scaleUp 1.5s forwards;
   }
 }
+.calendar .button-container-calendar {
+  display: none;
+}
 .calendar-container {
+  padding-top: 6rem;
   background-color: rgba(252, 247, 215, 0.25);
 }
-.calendar-container .addClass {
+.calendar-container .add-class {
+  margin-left: 3rem;
+}
+.calendar-container .delete-class {
+  margin-left: 1rem;
+}
+.calendar-container .add-class, .calendar-container .delete-class {
   border: none;
   border-radius: 5px;
   font-size: 1.1rem;
@@ -135,16 +152,15 @@ button {
   padding: 0.2rem 1rem;
   width: 8rem;
   background-color: #7ab429;
-  padding: 0.5rem;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  margin-left: 3rem;
+  margin-right: 1rem;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-.calendar-container .addClass:hover {
+.calendar-container .add-class:hover, .calendar-container .delete-class:hover {
   background-color: rgb(243, 243, 242);
-  color: rgb(16, 156, 3);
+  color: #7ab429;
   font-weight: 700;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }

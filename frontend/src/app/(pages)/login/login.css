@@ -27,6 +27,13 @@ body {
   box-sizing: border-box;
 }
 
+.anima-loading, .anima-tbc {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 button {
   cursor: pointer;
 }
@@ -124,13 +131,6 @@ button {
     animation: anima-scaleUp 1.5s forwards;
   }
 }
-.anima-loading {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .loading-container {
   padding-right: 0;
 }

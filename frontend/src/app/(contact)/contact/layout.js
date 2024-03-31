@@ -1,4 +1,3 @@
-import Nav from '../../components/nav/Nav';
 
 
 export const metadata = {
@@ -10,7 +9,6 @@ export const metadata = {
 const Layout = ({ children }) => (
 
     <article>
-        <Nav />
         {children}
     </article>
 

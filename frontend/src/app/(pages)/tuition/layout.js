@@ -1,4 +1,3 @@
-import Nav from '../../components/nav/Nav';
 
 export const metadata = {
     title: 'Tuition | Academy Atlas',
@@ -9,7 +8,6 @@ export const metadata = {
 const Layout = ({ children }) => (
 
     <article>
-         <Nav />
         {children}
     </article>
 

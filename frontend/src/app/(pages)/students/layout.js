@@ -10,7 +10,6 @@ export const metadata = {
 const Layout = ({ children }) => (
 
     <article>
-         <Nav />
         {children}
     </article>
 

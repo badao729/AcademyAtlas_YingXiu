@@ -1,0 +1,44 @@
+@use "../../../styles/partials/global" as *;
+@use "../../../styles/partials/variables" as *;
+@use"../../../styles/partials/animation" as *;
+
+
+
+.about {
+    background-color: rgba(252, 247, 215, 0.25);
+
+
+    .button-container-about {
+        display: none
+    }
+
+    &-body {
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+
+        .anima-shiba {
+            width: 15rem;
+        }
+
+        .ying {
+            padding-top: 3.5rem;
+            padding-left: 5rem;
+
+            &-img {
+                width: 10rem;
+                border-radius: 10rem;
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+                }
+
+            }
+        }
+
+
+    }
+
+
+
+}
