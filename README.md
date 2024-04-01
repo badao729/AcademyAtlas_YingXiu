@@ -1,3 +1,6 @@
+### NOTE: Default branch is develop, not main
+
+
 # Project Intro
 AcademyAtlas -
 Beyond Limits, Beyond Learning.
