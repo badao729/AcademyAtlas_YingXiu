@@ -41,15 +41,15 @@ export default function CalendarPage() {
         const getAllEvents = async () => {
             const { data } = await axios.get('http://localhost:8000/events', { headers })
             const myEvent = []
-            if(data && data.length > 0) {
+            if (data && data.length > 0) {
                 console.log('data all:', data)
                 data?.map(event => {
                     let startTime = parseInt(event["start_time"])
                     let endTime = parseInt(event["end_time"])
-                    if(startTime) {
+                    if (startTime) {
                         startTime = convertUnixToISO(startTime)
                     }
-                    if(endTime) {
+                    if (endTime) {
                         endTime = convertUnixToISO(endTime)
                     }
                     const customEvent = {
@@ -94,7 +94,7 @@ export default function CalendarPage() {
     }
 
 
-    async function handleEventAdd({event}) {
+    async function handleEventAdd({ event }) {
         const dbParams = {
             "event_name": localStorage.getItem('user'),
             "start_time": moment(event.start).toDate(),
@@ -105,23 +105,29 @@ export default function CalendarPage() {
 
 
     async function handleDeleteEvent() {
+        if (!selectedEventId) {
+            alert('Please select an event to delete.');
+            return;
+        }
+
         const [name, startTime] = selectedEventId.split('|')
         const params = {
             name,
             startTime
         }
+
+
+
         try {
             const { data } = await axios.post('http://localhost:8000/event', params, { headers })
             const { eventId } = data
             const { data: deleteData } = await axios.delete(`http://localhost:8000/events/${eventId}`)
+            
         } catch (error) {
             console.error('Error deleting event:', error);
         }
 
-        // if (!selectedEventId) {
-        //     alert('Please select an event to delete.');
-        //     return;
-        // }
+
 
         // try {
         //     const response = await axios
