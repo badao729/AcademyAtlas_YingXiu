@@ -44,10 +44,10 @@ app.post('/register', async (req, res) => {
   try {
     const result = await client.query(
       'INSERT INTO users (email, password_hash, first_name, last_name, role, name) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
-      [email, hashedPassword, firstName, lastName, role, firstName]);
+      [email, hashedPassword, firstName, lastName, role, `${firstName} ${lastName}`]);
     const userId = result.rows[0].id;
 
-    // // Send welcome email
+    // // Send welcome email via Nodemailer
     // await transporter.sendMail({
     //   from: '"Your App Name" <yourgmail@gmail.com>',
     //   to: email,
