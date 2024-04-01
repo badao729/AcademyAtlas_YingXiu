@@ -10,8 +10,9 @@ import { useState, useEffect } from "react";
 export default function Nav() {
     const [userName, setUserName] = useState("")
 
+
     useEffect(() => {
-        const avatarUser = localStorage.getItem('user') || "User";
+        const avatarUser = localStorage.getItem('user') || "";
         setUserName(avatarUser.slice(0, 8));
     }, []);
 
@@ -20,9 +21,9 @@ export default function Nav() {
         if (localStorage.getItem('user')) {
             localStorage.removeItem('user');
             alert('You have been successfully logged out');
-            setUserName("User");
+            setUserName("");
         } else {
-            alert('You are not a user yet');
+            alert('You are not logged in yet. Please sign in or register.');
         }
     }
 
@@ -62,7 +63,7 @@ export default function Nav() {
                 <div className="nav-avater">
                     <Lottie className="nav-avater-animation" animationData={avatarAnima} />
                 </div>
-                
+
                 <div className="button-container-logout">
                     <div className="user-name">{userName}</div>
                     <button className="logout-button" onClick={handleLogout}>Logout</button>

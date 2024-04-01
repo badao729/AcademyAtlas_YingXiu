@@ -19,14 +19,13 @@ export default function LoginPage() {
     const router = useRouter()
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    
 
 
-    // const supabase = createClientComponentClient();
 
     useEffect(() => {
         async function getUser() {
-            // const { data: { user } } = await supabase.auth.getUser()
-            const localUser = localStorage.getItem('email')
+            const localUser = localStorage.getItem('user')
             setUser(localUser)
 
         }
@@ -51,6 +50,7 @@ export default function LoginPage() {
                     'Content-Type': 'application/json'
                 }
             })
+
         setUser(data.email)
         const {firstName, lastName} = data
         localStorage.setItem('email', email)

@@ -32,7 +32,7 @@ export default function LoginPage() {
     useEffect(() => {
         async function getUser() {
             // const { data: { user } } = await supabase.auth.getUser()
-            const localUser = localStorage.getItem('email')
+            const localUser = localStorage.getItem('user')
             setUser(localUser)
         }
         setLoading(false)
