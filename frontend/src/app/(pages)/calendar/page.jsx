@@ -111,13 +111,11 @@ export default function CalendarPage() {
             startTime
         }
         try {
-
             const { data } = await axios.post('http://localhost:8000/event', params, { headers })
             const { eventId } = data
             const { data: deleteData } = await axios.delete(`http://localhost:8000/events/${eventId}`)
         } catch (error) {
             console.error('Error deleting event:', error);
-            alert('Failed to delete the event');
         }
 
         // if (!selectedEventId) {
