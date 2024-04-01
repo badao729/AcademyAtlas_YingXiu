@@ -119,24 +119,6 @@ export default function CalendarPage() {
             console.error('Error deleting event:', error);
             alert('Failed to delete the event');
         }
-
-        // if (!selectedEventId) {
-        //     alert('Please select an event to delete.');
-        //     return;
-        // }
-
-        // try {
-        //     const response = await axios
-        //         .delete(`http://localhost:8000/events/${selectedEventId}`);
-        //     if (response.status === 200) {
-        //         alert('Event deleted successfully');
-        //         setEvents(events.filter(event => event.event_id !== selectedEventId));
-        //         setSelectedEventId('');
-        //     }
-        // } catch (error) {
-        //     console.error('Error deleting event:', error);
-        //     alert('Failed to delete the event');
-        // }
     };
 
 
@@ -147,30 +129,6 @@ export default function CalendarPage() {
             </>
         )
     }
-
-
-
-
-    //原始数据
-    // const onEventAdded = event => {
-    //     let calendarApi = calendarRef.current.getApi();
-    //     calendarApi.addEvent({
-    //         start:moment(event.start).toDate(),
-    //         end: moment(event.end).toDate(),
-    //         title:event.title
-    //     });
-
-    // };
-
-    // async function handleDatesSet(data) {
-    //     const response = await axios.get(
-    //         "/api/calendar/get-events?start=" 
-    //         + moment(data.start).toISOString() 
-    //         + "&end=" + moment(data.end).toISOString
-    //         )
-    //     setEvent(response.data)
-    // }
-    //原始数据
 
 
 
