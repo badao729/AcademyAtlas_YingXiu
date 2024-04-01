@@ -24,16 +24,36 @@
 
         .ying {
             padding-top: 3.5rem;
+            display: flex;
+            flex-direction: row;
+            padding-bottom: 3rem;
 
             &-img {
-                width: 10rem;
+                width: 160px;
+                width: 160px;
+
                 border-radius: 10rem;
                 cursor: pointer;
 
                 &:hover {
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
                 }
+            }
 
+            .intro{
+                display: flex;
+                flex-direction:column;
+                margin-left: 4rem;
+                margin-top: 1rem;
+                >h3{
+                    padding-top: 1rem;
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+                >h4{
+                    padding-top: 0.8rem;
+                    font-size: 1rem;
+                }
             }
         }
 
