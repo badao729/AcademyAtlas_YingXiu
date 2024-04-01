@@ -27,11 +27,9 @@ export default function LoginPage() {
     const [loading, setLoading] = useState(true);
 
 
-    // const supabase = createClientComponentClient();
 
     useEffect(() => {
         async function getUser() {
-            // const { data: { user } } = await supabase.auth.getUser()
             const localUser = localStorage.getItem('user')
             setUser(localUser)
         }
@@ -71,7 +69,6 @@ export default function LoginPage() {
     }
 
     const handleLogout = async () => {
-        // await supabase.auth.signOut();
         localStorage.removeItem('email')
         router.refresh();
         setUser(null)

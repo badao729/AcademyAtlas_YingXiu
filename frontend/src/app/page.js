@@ -39,12 +39,6 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* <Link href="/register"> 
-          <button className="anima-scaleUp registar">
-          <h2>Get started</h2>
-          </button> 
-          </Link> */}
-
         <Link href="/register">
           <Lottie className="start-anima" animationData={start} />
         </Link>
@@ -55,7 +49,6 @@ export default function Home() {
       </section>
 
       <section className="slogan">
-        {/* <Lottie className="anima-arrow" animationData={arrow} /> */}
         <div>
           <h1 className="front-quote">“</h1>
           <h3 className="slogan-text1">Beyond Limits</h3>
