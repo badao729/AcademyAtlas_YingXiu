@@ -43,8 +43,11 @@ export default function Students() {
                     <h2 className="student-payments-title">Payments</h2>
 
                     <div className="student-payments-info">
-                        <div>Date</div>
-                        <div>Amount</div>
+                        <div className="student-payments-info-transaction">
+                            <div>Date</div>
+                            <div>Amount</div>
+                        </div>
+                        <div>Balance:</div>
                     </div>
 
                     <div className="button-container">

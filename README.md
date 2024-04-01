@@ -1,27 +1,17 @@
 # Project Title
-MyTeachMate
-
-EduManage Pro
-
-PlanMyClass -
-
 AcademyAtlas -
 
-
-AcademyAtlas:
 Plan, Pursue, Achieve.
 Beyond Limits, Beyond Learning.
 
 
-color
+
+# Color Set
 #61A3BA
 #FFFFDD
 #D2DE32
 #A2C579
 #7ab429 main AA green
-
-
-
 
 
 
@@ -36,11 +26,13 @@ It aims to streamline administrative tasks, enhance communication between teache
 
 The platform needs to support two types of accounts: teachers and students.
 
-Teachers 
+All Users 
 - schedule classes through a calendar interface
+- delete courses function
+- auth function
+- user avatar
 
-(nice to have)
-- create student accounts
+Teacher User(nice to have)
 - view summaries of all student courses.
 - manage tuition fees received, generate and download invoices
 - set individual lesson prices to reflect in student balances
@@ -48,7 +40,7 @@ Teachers
 - track course progress and provide feedback
 - maintain a notes section for important reminders.
 
-Students (nice to have)
+Students User (nice to have)
 - only access own schedules （JWT）
 - book lessons during available times
 - receive lesson feedback

@@ -13,6 +13,7 @@ app.use(cors())
 // PostgreSQL client setup
 const client = new pg.Client({
   connectionString: 'postgresql://postgres:0911@localhost:5432/postgres'
+
 });
 client.connect();
 
@@ -43,10 +44,10 @@ app.post('/register', async (req, res) => {
   try {
     const result = await client.query(
       'INSERT INTO users (email, password_hash, first_name, last_name, role, name) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
-      [email, hashedPassword, firstName, lastName, role, firstName]);
+      [email, hashedPassword, firstName, lastName, role, `${firstName} ${lastName}`]);
     const userId = result.rows[0].id;
 
-    // // Send welcome email
+    // // Send welcome email via Nodemailer
     // await transporter.sendMail({
     //   from: '"Your App Name" <yourgmail@gmail.com>',
     //   to: email,
@@ -89,12 +90,13 @@ app.post('/login', async (req, res) => {
 app.get('/users', async (req, res) => {
   try {
     // Execute a query to fetch all users
-    const result = await client.query('SELECT id, email, first_name, last_name FROM users');
+    const result = await client.query('SELECT id, email, first_name, last_name, name FROM users');
     const users = result.rows;
     const modifiedArray = users.map(obj => ({
       email: obj.email,
       firstName: obj.first_name,
-      lastName: obj.last_name
+      lastName: obj.last_name,
+      name: obj.name
     }));
     // Send the fetched users as a response
     res.json(modifiedArray);
@@ -108,7 +110,7 @@ app.post('/event', async (req, res) => {
   const { name, startTime } = req.body
   const result = await client.query(
     'SELECT * FROM events WHERE event_name=$1 AND start_time=$2', [name, startTime])
-  res.status(200).json({"eventId":result.rows[0]["event_id"]})
+  res.status(200).json({ "eventId": result.rows[0]["event_id"] })
 })
 
 
@@ -119,15 +121,15 @@ app.get('/events', async (req, res) => {
 
 
 app.post('/events', async (req, res) => {
-  const { event_name, start_time, end_time } = req.body;
+  const { event_name, start_time, end_time, booking_user } = req.body;
   try {
-    const query = 'INSERT INTO events (event_name, start_time, end_time) VALUES ($1, $2, $3) RETURNING *';
-    const values = [event_name, convertToUnixTime(start_time), convertToUnixTime(end_time)];
+    const query = 'INSERT INTO events (event_name, start_time, end_time, booking_user) VALUES ($1, $2, $3,$4) RETURNING *';
+    const values = [event_name, convertToUnixTime(start_time), convertToUnixTime(end_time),booking_user];
     const result = await client.query(query, values);
     res.status(201).json(result.rows[0]);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Server Error,Post Events Failed');
   }
 });
 

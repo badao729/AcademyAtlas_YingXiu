@@ -10,18 +10,21 @@ import AddClass from "./AddClass"
 import moment from "moment"
 import Lottie from "lottie-react"
 
+
+
 import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import convertUnixToISO from '../../utils/convertUnixToISO'
+import convertToUnixTime from "../../utils/convertToUnixTime"
 
 export default function CalendarPage() {
 
     const [modalOpen, setModalOpen] = useState(false)
     const [events, setEvents] = useState([]);
     const calendarRef = useRef(null);
-    const [selectedEventId, setSelectedEventId] = useState("")
+    const [selectedEvent, setSelectedEvent] = useState("")
     const [loading, setLoading] = useState(true);
     const headers = {
         'Content-Type': 'application/json'
@@ -41,15 +44,15 @@ export default function CalendarPage() {
         const getAllEvents = async () => {
             const { data } = await axios.get('http://localhost:8000/events', { headers })
             const myEvent = []
-            if(data && data.length > 0) {
+            if (data && data.length > 0) {
                 console.log('data all:', data)
                 data?.map(event => {
                     let startTime = parseInt(event["start_time"])
                     let endTime = parseInt(event["end_time"])
-                    if(startTime) {
+                    if (startTime) {
                         startTime = convertUnixToISO(startTime)
                     }
-                    if(endTime) {
+                    if (endTime) {
                         endTime = convertUnixToISO(endTime)
                     }
                     const customEvent = {
@@ -69,10 +72,17 @@ export default function CalendarPage() {
 
 
     const handleSelectChange = (e) => {
-        setSelectedEventId(e.target.value);
+        setSelectedEvent(e.target.value);
     }
 
+
     const onEventAdded = async event => {
+        if(!localStorage.getItem('user')){
+            alert('please sign in, can not add event on calendar');
+            console.error('please sign in, can not add event on calendar')
+            return;
+        }
+
         let calendarApi = calendarRef.current.getApi();
         const eventParams = {
             start: moment(event.start).toDate(),
@@ -94,9 +104,16 @@ export default function CalendarPage() {
     }
 
 
-    async function handleEventAdd({event}) {
+    async function handleEventAdd({ event }) {
+        // if(!localStorage.getItem('user')){
+        //     alert('Please login');
+        //     console.error('please sign in, can not pass event to database')
+        //     return;
+        // }
+
         const dbParams = {
-            "event_name": localStorage.getItem('user'),
+            "booking_user": localStorage.getItem('user'),
+            "event_name": event.title,
             "start_time": moment(event.start).toDate(),
             "end_time": moment(event.end).toDate(),
         }
@@ -105,39 +122,33 @@ export default function CalendarPage() {
 
 
     async function handleDeleteEvent() {
-        const [name, startTime] = selectedEventId.split('|')
+        if (!selectedEvent) {
+            alert('Please select an event to delete.');
+            return;
+        }
+
+        const [name, startTime] = selectedEvent.split('|')
         const params = {
             name,
-            startTime
+            startTime: convertToUnixTime(startTime)
         }
-        try {
 
+        try {
             const { data } = await axios.post('http://localhost:8000/event', params, { headers })
             const { eventId } = data
-            const { data: deleteData } = await axios.delete(`http://localhost:8000/events/${eventId}`)
+            const response = await axios.delete(`http://localhost:8000/events/${eventId}`)
+            if (response.status === 200) {
+                alert('Event deleted successfully');
+                setSelectedEvent('');
+                setEvents(events.filter(event => event.id !== eventId));
+            }
         } catch (error) {
             console.error('Error deleting event:', error);
             alert('Failed to delete the event');
         }
 
-        // if (!selectedEventId) {
-        //     alert('Please select an event to delete.');
-        //     return;
-        // }
+    }
 
-        // try {
-        //     const response = await axios
-        //         .delete(`http://localhost:8000/events/${selectedEventId}`);
-        //     if (response.status === 200) {
-        //         alert('Event deleted successfully');
-        //         setEvents(events.filter(event => event.event_id !== selectedEventId));
-        //         setSelectedEventId('');
-        //     }
-        // } catch (error) {
-        //     console.error('Error deleting event:', error);
-        //     alert('Failed to delete the event');
-        // }
-    };
 
 
     if (loading) {
@@ -147,30 +158,6 @@ export default function CalendarPage() {
             </>
         )
     }
-
-
-
-
-    //原始数据
-    // const onEventAdded = event => {
-    //     let calendarApi = calendarRef.current.getApi();
-    //     calendarApi.addEvent({
-    //         start:moment(event.start).toDate(),
-    //         end: moment(event.end).toDate(),
-    //         title:event.title
-    //     });
-
-    // };
-
-    // async function handleDatesSet(data) {
-    //     const response = await axios.get(
-    //         "/api/calendar/get-events?start=" 
-    //         + moment(data.start).toISOString() 
-    //         + "&end=" + moment(data.end).toISOString
-    //         )
-    //     setEvent(response.data)
-    // }
-    //原始数据
 
 
 
@@ -189,7 +176,7 @@ export default function CalendarPage() {
 
                     <select
                         onChange={handleSelectChange}
-                        value={selectedEventId}
+                        value={selectedEvent}
                     >
                         <option value="">Select an class</option>
                         {events.map((event, index) => (

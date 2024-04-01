@@ -5,7 +5,6 @@ import NavButton from "../../components/navigation/navButton";
 import loadingAnima from "../../../assets/animation/loading-animation.json"
 import success from "../../../assets/animation/success-animation.json"
 
-// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Lottie from "lottie-react"
@@ -19,14 +18,13 @@ export default function LoginPage() {
     const router = useRouter()
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    
 
 
-    // const supabase = createClientComponentClient();
 
     useEffect(() => {
         async function getUser() {
-            // const { data: { user } } = await supabase.auth.getUser()
-            const localUser = localStorage.getItem('email')
+            const localUser = localStorage.getItem('user')
             setUser(localUser)
 
         }
@@ -51,11 +49,13 @@ export default function LoginPage() {
                     'Content-Type': 'application/json'
                 }
             })
+
         setUser(data.email)
         const {firstName, lastName} = data
         localStorage.setItem('email', email)
         localStorage.setItem('user', `${firstName} ${lastName}`)
         localStorage.setItem('userFirstName',firstName)
+        localStorage.setItem('userLastName',lastName)
         router.refresh();
         setEmail('')
         setPassword('')

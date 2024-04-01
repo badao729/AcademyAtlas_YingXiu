@@ -10,13 +10,6 @@ import '../../../styles/partials/_datetime.scss'
 
 
 
-// const supabase = createClient(
-//     process.env.NEXT_PUBLIC_SUPABASE_URL,
-//     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-// );
-
-
-
 export default function ({ isOpen, onClose, onEventAdded }) {
     const [title, setTitle] = useState("");
     const [start, setStart] = useState(new Date());

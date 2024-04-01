@@ -167,17 +167,24 @@
                 padding-bottom: 0.5rem;
                 padding-left: 0.5rem;
                 padding-right: 0.5rem;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
                 background-color: #fafdec;
                 padding-top: 0.5rem;
                 border-radius: 5px;
                 border: 1px solid $Light-green;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
 
-                >div {
-                    padding-right: 0.3rem;
+                &-transaction {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    >div {
+                        padding-right: 0.3rem;
+                    }
                 }
+
             }
 
             .unit-price-title {
