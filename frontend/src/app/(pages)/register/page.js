@@ -6,7 +6,6 @@ import NavButton from "../../components/navigation/navButton";
 import loadingAnima from "../../../assets/animation/loading-animation.json"
 import success from "../../../assets/animation/success-animation.json"
 import axios from 'axios'
-// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Lottie from "lottie-react"
@@ -40,6 +39,7 @@ export default function LoginPage() {
 
 
     const handleSignUp = async () => {
+        
         if (!email || !password || !firstName || !lastName || !role) {
             alert("Please fill in all fields.");
             return;
@@ -61,7 +61,6 @@ export default function LoginPage() {
             })
         setUser(data.email)
         localStorage.setItem('email', data.email)
-        const {firstName, lastName} = data
         localStorage.setItem('user', `${firstName} ${lastName}`)
         router.refresh();
         setEmail('')

@@ -75,7 +75,14 @@ export default function CalendarPage() {
         setSelectedEvent(e.target.value);
     }
 
+
     const onEventAdded = async event => {
+        if(!localStorage.getItem('user')){
+            alert('please sign in, can not add event on calendar');
+            console.error('please sign in, can not add event on calendar')
+            return;
+        }
+
         let calendarApi = calendarRef.current.getApi();
         const eventParams = {
             start: moment(event.start).toDate(),
@@ -98,8 +105,15 @@ export default function CalendarPage() {
 
 
     async function handleEventAdd({ event }) {
+        // if(!localStorage.getItem('user')){
+        //     alert('Please login');
+        //     console.error('please sign in, can not pass event to database')
+        //     return;
+        // }
+
         const dbParams = {
-            "event_name": localStorage.getItem('user'),
+            "booking_user": localStorage.getItem('user'),
+            "event_name": event.title,
             "start_time": moment(event.start).toDate(),
             "end_time": moment(event.end).toDate(),
         }
@@ -144,8 +158,6 @@ export default function CalendarPage() {
             </>
         )
     }
-
-
 
 
 

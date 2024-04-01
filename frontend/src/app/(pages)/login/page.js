@@ -55,6 +55,7 @@ export default function LoginPage() {
         localStorage.setItem('email', email)
         localStorage.setItem('user', `${firstName} ${lastName}`)
         localStorage.setItem('userFirstName',firstName)
+        localStorage.setItem('userLastName',lastName)
         router.refresh();
         setEmail('')
         setPassword('')
