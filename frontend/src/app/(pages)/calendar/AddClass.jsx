@@ -23,18 +23,14 @@ export default function ({ isOpen, onClose, onEventAdded }) {
     const [end, setEnd] = useState(new Date());
     const [students, setStudents] = useState([]);
 
-
-
     const onSubmit = (event) => {
         event.preventDefault();
-
         onEventAdded({
             title,
             start,
             end
         })
         onClose();
-        location.reload()
     }
 
 
@@ -47,7 +43,6 @@ export default function ({ isOpen, onClose, onEventAdded }) {
                         'Content-Type': 'application/json'
                     }
                 })
-            console.log('student data:', data)
             const studentLists = []
             data.map(student => studentLists.push(`${student.firstName} ${student.lastName}`))
             setStudents(studentLists)

@@ -38,21 +38,30 @@ export default function CalendarPage() {
 
     useEffect(() => {
         let calendarApi = calendarRef.current?.getApi();
-        console.log("calendarApi:", calendarApi)
-
         const getAllEvents = async () => {
             const { data } = await axios.get('http://localhost:8000/events', { headers })
             const myEvent = []
-            data?.map(event => {
-                const customEvent = {
-                    id: event["event_id"],
-                    start: event["start_time"],
-                    end: event["end_time"],
-                    title: event["event_name"]
-                }
-                myEvent.push(customEvent)
-            })
-            setEvents(myEvent)
+            if(data && data.length > 0) {
+                console.log('data all:', data)
+                data?.map(event => {
+                    let startTime = parseInt(event["start_time"])
+                    let endTime = parseInt(event["end_time"])
+                    if(startTime) {
+                        startTime = convertUnixToISO(startTime)
+                    }
+                    if(endTime) {
+                        endTime = convertUnixToISO(endTime)
+                    }
+                    const customEvent = {
+                        id: event["event_id"],
+                        start: startTime,
+                        end: endTime,
+                        title: event["event_name"]
+                    }
+                    myEvent.push(customEvent)
+                })
+                setEvents(myEvent)
+            }
         }
         getAllEvents()
     }, [])
@@ -63,8 +72,6 @@ export default function CalendarPage() {
         setSelectedEventId(e.target.value);
     }
 
-
-
     const onEventAdded = async event => {
         let calendarApi = calendarRef.current.getApi();
         const eventParams = {
@@ -72,7 +79,6 @@ export default function CalendarPage() {
             end: moment(event.end).toDate(),
             title: event.title
         }
-
         calendarApi.addEvent(eventParams);
     };
 
@@ -88,22 +94,18 @@ export default function CalendarPage() {
     }
 
 
-    async function handleEventAdd() {
+    async function handleEventAdd({event}) {
         const dbParams = {
             "event_name": localStorage.getItem('user'),
             "start_time": moment(event.start).toDate(),
             "end_time": moment(event.end).toDate(),
         }
-        const { data } = await axios.post("http://localhost:8000/events", dbParams, { headers })
-
-        console.log(data)
+        await axios.post("http://localhost:8000/events", dbParams, { headers })
     }
 
 
     async function handleDeleteEvent() {
-        console.log('selectedEventId:', selectedEventId)
         const [name, startTime] = selectedEventId.split('|')
-        console.log(name, startTime)
         const params = {
             name,
             startTime
@@ -113,7 +115,6 @@ export default function CalendarPage() {
             const { data } = await axios.post('http://localhost:8000/event', params, { headers })
             const { eventId } = data
             const { data: deleteData } = await axios.delete(`http://localhost:8000/events/${eventId}`)
-            location.reload();
         } catch (error) {
             console.error('Error deleting event:', error);
             alert('Failed to delete the event');
@@ -193,7 +194,7 @@ export default function CalendarPage() {
                         <option value="">Select an class</option>
                         {events.map((event, index) => (
                             <option key={index} value={`${event.title}|${event.start}`}>
-                                {`${event.title} - ${moment(convertUnixToISO(event.start)).format('ddd Y/M/D H:mm')} to ${moment(convertUnixToISO(event.end)).format('H:mm')}`}                                </option>
+                                {`${event.title} - ${moment((event.start)).format('ddd Y/M/D H:mm')} to ${moment((event.end)).format('H:mm')}`}                                </option>
                         ))}
                     </select>
 
