@@ -17,8 +17,8 @@ export default function Nav() {
 
 
     const handleLogout = async () => {
-        if (localStorage.getItem('email')) {
-            localStorage.removeItem('email');
+        if (localStorage.getItem('user')) {
+            localStorage.removeItem('user');
             alert('You have been successfully logged out');
             setUserName("User");
         } else {
