@@ -38,9 +38,9 @@ The platform needs to support two types of accounts: teachers and students.
 
 Teachers 
 - schedule classes through a calendar interface
+- auth function (email verification)
 
 (nice to have)
-- create student accounts
 - view summaries of all student courses.
 - manage tuition fees received, generate and download invoices
 - set individual lesson prices to reflect in student balances
@@ -49,7 +49,7 @@ Teachers
 - maintain a notes section for important reminders.
 
 Students (nice to have)
-- only access own schedules （JWT）
+- only access own schedules
 - book lessons during available times
 - receive lesson feedback
 - be reminded of low balance for tuition fees
@@ -71,7 +71,7 @@ Targeted at small to midsize educational organizations and self-employed educato
 
 Teacher Features:
 
-1. Ability to create and manage student accounts.(nice to have)
+1. Auth function (email verification)
 2. Tracking and recording of student progress and feedback. (nice to have)
 3. Scheduling system for lessons.
 4. Financial management tools for tracking tuition payments and generating invoices.(nice to have)
@@ -99,10 +99,12 @@ Customization:
 ### Tech Stack
 - JS
 - React/Next
-- SQL
-- NodeJS/Express
-- react calendar
-- jawsdb
+- PostgreSQL
+- prisma
+- supabase
+- react fullCalendar
+- axios, lottie, moment, sass
+- react-datetime, react-dom, react-modal
 - to be continue
 
 
